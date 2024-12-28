@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="Survey Report" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+    <parameter name="tableName" class="java.lang.String" isForPrompting="false"/>
+    <parameter name="appName" class="java.lang.String" isForPrompting="false"/>
+    <parameter name="reportDate" class="java.lang.String" isForPrompting="false"/>
+    <queryString>
+        <![CDATA[]]>
+    </queryString>
+    <field name="SurveyID" class="java.lang.Integer"/>
+    <field name="Name" class="java.lang.String"/>
+    <field name="Description" class="java.lang.String"/>
+    <field name="StartDate" class="java.lang.String"/>
+    <field name="EndDate" class="java.lang.String"/>
+    <field name="MinResponses" class="java.lang.Integer"/>
+    <field name="MaxResponses" class="java.lang.Integer"/>
+    <field name="SurveyStatusID" class="java.lang.Integer"/>
+    <title>
+        <band height="50">
+            <textField>
+                <reportElement x="0" y="10" width="555" height="30"/>
+                <textElement textAlignment="Center">
+                    <font size="18" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{tableName} + " Table Report"]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+    <detail>
+        <band height="20" splitType="Stretch">
+            <textField>
+                <reportElement x="0" y="0" width="80" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{SurveyID}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="80" y="0" width="100" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{Name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="180" y="0" width="150" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{Description}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="330" y="0" width="100" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{StartDate}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="430" y="0" width="100" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{EndDate}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="530" y="0" width="100" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{MinResponses}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="630" y="0" width="100" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{MaxResponses}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="730" y="0" width="100" height="20"/>
+                <textElement/>
+                <textFieldExpression><![CDATA[$F{SurveyStatusID}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <summary>
+        <band height="30">
+            <textField>
+                <reportElement x="0" y="0" width="555" height="30"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression><![CDATA["Report created by " + $P{appName} + " on " + $P{reportDate}]]></textFieldExpression>
+            </textField>
+        </band>
+    </summary>
+</jasperReport>
