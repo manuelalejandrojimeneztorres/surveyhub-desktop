@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,9 @@
 package es.ieselrincon.dam.ppp.surveyhubdesktop.dao;
 
 import es.ieselrincon.dam.ppp.surveyhubdesktop.models.Answer;
-import es.ieselrincon.dam.ppp.surveyhubdesktop.models.Question;
-import es.ieselrincon.dam.ppp.surveyhubdesktop.models.Response;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.utils.HibernateUtils;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -40,6 +40,9 @@ public class AnswerDAO {
         Transaction transaction = null;
         try (Session session = HibernateUtils.getSession()) {
             transaction = session.beginTransaction();
+            if (answer.getId() == null) {
+                answer.setCreatedAt(new Timestamp(new Date().getTime()));
+            }
             session.save(answer);
             transaction.commit();
         } catch (Exception e) {
@@ -65,6 +68,7 @@ public class AnswerDAO {
         Transaction transaction = null;
         try (Session session = HibernateUtils.getSession()) {
             transaction = session.beginTransaction();
+            answer.setUpdatedAt(new Timestamp(new Date().getTime()));
             session.update(answer);
             transaction.commit();
         } catch (Exception e) {
@@ -103,31 +107,11 @@ public class AnswerDAO {
     // Count Rows
     public long count() {
         try (Session session = HibernateUtils.getSession()) {
-            Query<Long> query = session.createQuery("select count(a.answerId) from Answer a", Long.class);
+            Query<Long> query = session.createQuery("select count(a.id) from Answer a", Long.class);
             return query.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
-        }
-    }
-
-    // Find Response by ID
-    public Response findResponseById(int id) {
-        try (Session session = HibernateUtils.getSession()) {
-            return session.get(Response.class, id);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    // Find Question by ID
-    public Question findQuestionById(int id) {
-        try (Session session = HibernateUtils.getSession()) {
-            return session.get(Question.class, id);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
         }
     }
 }

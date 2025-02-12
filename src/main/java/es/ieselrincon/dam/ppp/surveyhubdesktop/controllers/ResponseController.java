@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,13 @@
  */
 package es.ieselrincon.dam.ppp.surveyhubdesktop.controllers;
 
-import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.RespondentDAO;
+import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.SystemUserDAO;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.ResponseDAO;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.SurveyDAO;
-import es.ieselrincon.dam.ppp.surveyhubdesktop.models.Respondent;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.models.Response;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.models.Survey;
+import es.ieselrincon.dam.ppp.surveyhubdesktop.models.SystemUser;
+import es.ieselrincon.dam.ppp.surveyhubdesktop.utils.DateUtils;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.views.OnlineSurveySystemView;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -47,10 +48,10 @@ public class ResponseController {
     private final OnlineSurveySystemView view;
     private final ResponseDAO responseDAO;
     private final SurveyDAO surveyDAO;
-    private final RespondentDAO respondentDAO;
+    private final SystemUserDAO respondentDAO;
     private DefaultTableModel originalTableModel;
 
-    public ResponseController(OnlineSurveySystemView view, ResponseDAO responseDAO, SurveyDAO surveyDAO, RespondentDAO respondentDAO) {
+    public ResponseController(OnlineSurveySystemView view, ResponseDAO responseDAO, SurveyDAO surveyDAO, SystemUserDAO respondentDAO) {
         this.view = view;
         this.responseDAO = responseDAO;
         this.surveyDAO = surveyDAO;
@@ -71,12 +72,16 @@ public class ResponseController {
         model.setRowCount(0); // Limpiar la tabla antes de rellenarla
         List<Response> responseList = responseDAO.findAll();
         for (Response response : responseList) {
+            String beginDateStr = DateUtils.convertTimestampToString(response.getBeginDate());
+            String endDateStr = DateUtils.convertTimestampToString(response.getEndDate());
             model.addRow(new Object[]{
-                response.getResponseId(),
-                response.getSurveyId(),
-                response.getRespondentId(),
-                response.getBeginDate(),
-                response.getEndDate()
+                response.getId(),
+                response.getSurveyBySurveyId().getId(),
+                response.getSystemUserBySystemUserId().getId(),
+                beginDateStr,
+                endDateStr,
+                response.getCreatedAt(),
+                response.getUpdatedAt()
             });
         }
     }
@@ -85,10 +90,15 @@ public class ResponseController {
     public void fillFieldsFromSelectedRow() {
         int selectedRow = view.getjTable7().getSelectedRow();
         if (selectedRow != -1) {
-            Integer surveyId = (Integer) view.getjTable7().getValueAt(selectedRow, 1);
-            Integer respondentId = (Integer) view.getjTable7().getValueAt(selectedRow, 2);
-            String beginDate = (String) view.getjTable7().getValueAt(selectedRow, 3);
-            String endDate = (String) view.getjTable7().getValueAt(selectedRow, 4);
+            Object surveyIdObj = view.getjTable7().getValueAt(selectedRow, 1);
+            Object respondentIdObj = view.getjTable7().getValueAt(selectedRow, 2);
+            Object beginDateObj = view.getjTable7().getValueAt(selectedRow, 3);
+            Object endDateObj = view.getjTable7().getValueAt(selectedRow, 4);
+
+            Integer surveyId = (surveyIdObj != null) ? (Integer) surveyIdObj : null;
+            Integer respondentId = (respondentIdObj != null) ? (Integer) respondentIdObj : null;
+            String beginDate = (beginDateObj != null) ? beginDateObj.toString() : "";
+            String endDate = (endDateObj != null) ? endDateObj.toString() : "";
 
             view.getjSpinner11().setValue(surveyId);
             view.getjSpinner12().setValue(respondentId);
@@ -106,21 +116,21 @@ public class ResponseController {
             String endDate = view.getjTextField20().getText();
 
             // Buscar Survey y Respondent correspondientes
-            Survey survey = responseDAO.findSurveyById(surveyId);
+            Survey survey = surveyDAO.findById(surveyId);
             if (survey == null) {
                 throw new IllegalArgumentException("Invalid Survey ID");
             }
 
-            Respondent respondent = responseDAO.findRespondentById(respondentId);
+            SystemUser respondent = respondentDAO.findById(respondentId);
             if (respondent == null) {
                 throw new IllegalArgumentException("Invalid Respondent ID");
             }
 
             Response response = new Response();
             response.setSurveyBySurveyId(survey);
-            response.setRespondentByRespondentId(respondent);
-            response.setBeginDate(beginDate);
-            response.setEndDate(endDate);
+            response.setSystemUserBySystemUserId(respondent);
+            response.setBeginDate(DateUtils.convertStringToTimestamp(beginDate));
+            response.setEndDate(DateUtils.convertStringToTimestamp(endDate));
 
             responseDAO.save(response);
 
@@ -146,20 +156,20 @@ public class ResponseController {
                     String updatedEndDate = view.getjTextField20().getText();
 
                     // Buscar Survey y Respondent correspondientes
-                    Survey survey = responseDAO.findSurveyById(updatedSurveyId);
+                    Survey survey = surveyDAO.findById(updatedSurveyId);
                     if (survey == null) {
                         throw new IllegalArgumentException("Invalid Survey ID");
                     }
 
-                    Respondent respondent = responseDAO.findRespondentById(updatedRespondentId);
+                    SystemUser respondent = respondentDAO.findById(updatedRespondentId);
                     if (respondent == null) {
                         throw new IllegalArgumentException("Invalid Respondent ID");
                     }
 
                     responseToUpdate.setSurveyBySurveyId(survey);
-                    responseToUpdate.setRespondentByRespondentId(respondent);
-                    responseToUpdate.setBeginDate(updatedBeginDate);
-                    responseToUpdate.setEndDate(updatedEndDate);
+                    responseToUpdate.setSystemUserBySystemUserId(respondent);
+                    responseToUpdate.setBeginDate(DateUtils.convertStringToTimestamp(updatedBeginDate));
+                    responseToUpdate.setEndDate(DateUtils.convertStringToTimestamp(updatedEndDate));
 
                     responseDAO.update(responseToUpdate);
 

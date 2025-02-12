@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -72,12 +72,14 @@ public class QuestionController {
         List<Question> questionList = questionDAO.findAll();
         for (Question question : questionList) {
             model.addRow(new Object[]{
-                question.getQuestionId(),
-                question.getSurveyBySurveyId().getSurveyId(),
-                question.getQuestionOrder(),
-                question.getQuestionTypeByQuestionTypeId().getQuestionTypeId(),
-                question.getQuestionText(),
-                question.getIsMandatory()
+                question.getId(),
+                question.getSurveyBySurveyId().getId(),
+                question.getOrder(),
+                question.getQuestionTypeByQuestionTypeId().getId(),
+                question.getText(),
+                question.getIsMandatory(),
+                question.getCreatedAt(),
+                question.getUpdatedAt()
             });
         }
     }
@@ -121,8 +123,8 @@ public class QuestionController {
             }
 
             Question question = new Question();
-            question.setQuestionOrder(questionOrder);
-            question.setQuestionText(questionText);
+            question.setOrder(questionOrder);
+            question.setText(questionText);
             question.setIsMandatory(isMandatory);
             question.setSurveyBySurveyId(survey);
             question.setQuestionTypeByQuestionTypeId(questionType);
@@ -162,8 +164,8 @@ public class QuestionController {
                         throw new IllegalArgumentException("Invalid Question Type ID");
                     }
 
-                    questionToUpdate.setQuestionOrder(updatedQuestionOrder);
-                    questionToUpdate.setQuestionText(updatedQuestionText);
+                    questionToUpdate.setOrder(updatedQuestionOrder);
+                    questionToUpdate.setText(updatedQuestionText);
                     questionToUpdate.setIsMandatory(updatedIsMandatory);
                     questionToUpdate.setSurveyBySurveyId(survey);
                     questionToUpdate.setQuestionTypeByQuestionTypeId(questionType);

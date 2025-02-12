@@ -25,33 +25,37 @@ import java.util.Collection;
  * @author Manuel Alejandro Jiménez Torres
  */
 @Entity
-public class SurveyStatus {
+public class Role {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
     private Integer id;
     @Basic
-    @Column(name = "status")
-    private String status;
+    @Column(name = "name")
+    private String name;
+    @Basic
+    @Column(name = "description")
+    private String description;
     @Basic
     @Column(name = "createdAt")
     private Timestamp createdAt;
     @Basic
     @Column(name = "updatedAt")
     private Timestamp updatedAt;
-    @OneToMany(mappedBy = "surveyStatusBySurveyStatusId")
-    private Collection<Survey> surveysById;
+    @OneToMany(mappedBy = "roleByRoleId")
+    private Collection<SystemUserRole> systemUserRolesById;
 
-    public SurveyStatus() {
+    public Role() {
     }
 
-    public SurveyStatus(Integer id, String status, Timestamp createdAt, Timestamp updatedAt, Collection<Survey> surveysById) {
+    public Role(Integer id, String name, String description, Timestamp createdAt, Timestamp updatedAt, Collection<SystemUserRole> systemUserRolesById) {
         this.id = id;
-        this.status = status;
+        this.name = name;
+        this.description = description;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.surveysById = surveysById;
+        this.systemUserRolesById = systemUserRolesById;
     }
 
     public Integer getId() {
@@ -62,12 +66,20 @@ public class SurveyStatus {
         this.id = id;
     }
 
-    public String getStatus() {
-        return status;
+    public String getName() {
+        return name;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Timestamp getCreatedAt() {
@@ -86,12 +98,12 @@ public class SurveyStatus {
         this.updatedAt = updatedAt;
     }
 
-    public Collection<Survey> getSurveysById() {
-        return surveysById;
+    public Collection<SystemUserRole> getSystemUserRolesById() {
+        return systemUserRolesById;
     }
 
-    public void setSurveysById(Collection<Survey> surveysById) {
-        this.surveysById = surveysById;
+    public void setSystemUserRolesById(Collection<SystemUserRole> systemUserRolesById) {
+        this.systemUserRolesById = systemUserRolesById;
     }
 
     @Override
@@ -103,18 +115,21 @@ public class SurveyStatus {
             return false;
         }
 
-        SurveyStatus that = (SurveyStatus) o;
+        Role role = (Role) o;
 
-        if (id != null ? !id.equals(that.id) : that.id != null) {
+        if (id != null ? !id.equals(role.id) : role.id != null) {
             return false;
         }
-        if (status != null ? !status.equals(that.status) : that.status != null) {
+        if (name != null ? !name.equals(role.name) : role.name != null) {
             return false;
         }
-        if (createdAt != null ? !createdAt.equals(that.createdAt) : that.createdAt != null) {
+        if (description != null ? !description.equals(role.description) : role.description != null) {
             return false;
         }
-        if (updatedAt != null ? !updatedAt.equals(that.updatedAt) : that.updatedAt != null) {
+        if (createdAt != null ? !createdAt.equals(role.createdAt) : role.createdAt != null) {
+            return false;
+        }
+        if (updatedAt != null ? !updatedAt.equals(role.updatedAt) : role.updatedAt != null) {
             return false;
         }
 
@@ -124,7 +139,8 @@ public class SurveyStatus {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (status != null ? status.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (createdAt != null ? createdAt.hashCode() : 0);
         result = 31 * result + (updatedAt != null ? updatedAt.hashCode() : 0);
         return result;
@@ -132,6 +148,6 @@ public class SurveyStatus {
 
     @Override
     public String toString() {
-        return "SurveyStatus{" + "id=" + id + ", status=" + status + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", surveysById=" + surveysById + '}';
+        return "Role{" + "id=" + id + ", name=" + name + ", description=" + description + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", systemUserRolesById=" + systemUserRolesById + '}';
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package es.ieselrincon.dam.ppp.surveyhubdesktop.models;
 
 import jakarta.persistence.*;
 
+import java.sql.Timestamp;
 import java.util.Collection;
 
 /**
@@ -28,45 +29,69 @@ public class QuestionType {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "QuestionTypeID")
-    private int questionTypeId;
+    @Column(name = "id")
+    private Integer id;
     @Basic
-    @Column(name = "QuestionType")
-    private String questionType;
+    @Column(name = "type")
+    private String type;
+    @Basic
+    @Column(name = "createdAt")
+    private Timestamp createdAt;
+    @Basic
+    @Column(name = "updatedAt")
+    private Timestamp updatedAt;
     @OneToMany(mappedBy = "questionTypeByQuestionTypeId")
-    private Collection<Question> questionsByQuestionTypeId;
+    private Collection<Question> questionsById;
 
     public QuestionType() {
     }
 
-    public QuestionType(int questionTypeId, String questionType, Collection<Question> questionsByQuestionTypeId) {
-        this.questionTypeId = questionTypeId;
-        this.questionType = questionType;
-        this.questionsByQuestionTypeId = questionsByQuestionTypeId;
+    public QuestionType(Integer id, String type, Timestamp createdAt, Timestamp updatedAt, Collection<Question> questionsById) {
+        this.id = id;
+        this.type = type;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.questionsById = questionsById;
     }
 
-    public int getQuestionTypeId() {
-        return questionTypeId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setQuestionTypeId(int questionTypeId) {
-        this.questionTypeId = questionTypeId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getQuestionType() {
-        return questionType;
+    public String getType() {
+        return type;
     }
 
-    public void setQuestionType(String questionType) {
-        this.questionType = questionType;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public Collection<Question> getQuestionsByQuestionTypeId() {
-        return questionsByQuestionTypeId;
+    public Timestamp getCreatedAt() {
+        return createdAt;
     }
 
-    public void setQuestionsByQuestionTypeId(Collection<Question> questionsByQuestionTypeId) {
-        this.questionsByQuestionTypeId = questionsByQuestionTypeId;
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Collection<Question> getQuestionsById() {
+        return questionsById;
+    }
+
+    public void setQuestionsById(Collection<Question> questionsById) {
+        this.questionsById = questionsById;
     }
 
     @Override
@@ -80,10 +105,16 @@ public class QuestionType {
 
         QuestionType that = (QuestionType) o;
 
-        if (questionTypeId != that.questionTypeId) {
+        if (id != null ? !id.equals(that.id) : that.id != null) {
             return false;
         }
-        if (questionType != null ? !questionType.equals(that.questionType) : that.questionType != null) {
+        if (type != null ? !type.equals(that.type) : that.type != null) {
+            return false;
+        }
+        if (createdAt != null ? !createdAt.equals(that.createdAt) : that.createdAt != null) {
+            return false;
+        }
+        if (updatedAt != null ? !updatedAt.equals(that.updatedAt) : that.updatedAt != null) {
             return false;
         }
 
@@ -92,13 +123,15 @@ public class QuestionType {
 
     @Override
     public int hashCode() {
-        int result = questionTypeId;
-        result = 31 * result + (questionType != null ? questionType.hashCode() : 0);
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + (createdAt != null ? createdAt.hashCode() : 0);
+        result = 31 * result + (updatedAt != null ? updatedAt.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return "QuestionType{" + "questionTypeId=" + questionTypeId + ", questionType=" + questionType + ", questionsByQuestionTypeId=" + questionsByQuestionTypeId + '}';
+        return "QuestionType{" + "id=" + id + ", type=" + type + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", questionsById=" + questionsById + '}';
     }
 }

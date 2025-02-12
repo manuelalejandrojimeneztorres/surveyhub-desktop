@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -72,9 +72,11 @@ public class AnswerOptionController {
         List<AnswerOption> answerOptionList = answerOptionDAO.findAll();
         for (AnswerOption answerOption : answerOptionList) {
             model.addRow(new Object[]{
-                answerOption.getAnswerOptionId(),
-                answerOption.getAnswerId(),
-                answerOption.getQuestionOptionId()
+                answerOption.getId(),
+                answerOption.getAnswerByAnswerId().getId(),
+                answerOption.getQuestionOptionByQuestionOptionId().getId(),
+                answerOption.getCreatedAt(),
+                answerOption.getUpdatedAt()
             });
         }
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -157,7 +157,7 @@ public class SurveyStatusEventController {
         view.getSurveyStatusesTableJMenuItem().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                surveyStatusController.generateReport("Survey Status", "Online Survey System", DateUtils.getCurrentDateWithTimeZone());
+                surveyStatusController.generateReport("Survey Status", "SurveyHub Desktop", DateUtils.getCurrentDateWithTimeZone());
             }
         });
 
@@ -165,7 +165,7 @@ public class SurveyStatusEventController {
         view.getjButton1().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                surveyStatusController.generateReport("Survey Status", "Online Survey System", DateUtils.getCurrentDateWithTimeZone());
+                surveyStatusController.generateReport("Survey Status", "SurveyHub Desktop", DateUtils.getCurrentDateWithTimeZone());
             }
         });
     }

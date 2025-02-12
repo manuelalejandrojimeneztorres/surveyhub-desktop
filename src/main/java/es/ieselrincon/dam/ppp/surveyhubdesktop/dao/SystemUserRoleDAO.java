@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,10 @@
  */
 package es.ieselrincon.dam.ppp.surveyhubdesktop.dao;
 
-import es.ieselrincon.dam.ppp.surveyhubdesktop.models.Respondent;
+import es.ieselrincon.dam.ppp.surveyhubdesktop.models.SystemUserRole;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.utils.HibernateUtils;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -26,19 +28,22 @@ import org.hibernate.query.Query;
  *
  * @author Manuel Alejandro Jiménez Torres
  */
-public class RespondentDAO {
+public class SystemUserRoleDAO {
 
     static {
         // Inicializar la clase anotada
-        HibernateUtils.initializeAnnotatedClass("es.ieselrincon.dam.ppp.surveyhubdesktop.models.Respondent");
+        HibernateUtils.initializeAnnotatedClass("es.ieselrincon.dam.ppp.surveyhubdesktop.models.SystemUserRole");
     }
 
     // Create
-    public void save(Respondent respondent) {
+    public void save(SystemUserRole systemUserRole) {
         Transaction transaction = null;
         try (Session session = HibernateUtils.getSession()) {
             transaction = session.beginTransaction();
-            session.save(respondent);
+            if (systemUserRole.getId() == null) {
+                systemUserRole.setCreatedAt(new Timestamp(new Date().getTime()));
+            }
+            session.save(systemUserRole);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -49,9 +54,9 @@ public class RespondentDAO {
     }
 
     // Read
-    public Respondent findById(int id) {
+    public SystemUserRole findById(int id) {
         try (Session session = HibernateUtils.getSession()) {
-            return session.get(Respondent.class, id);
+            return session.get(SystemUserRole.class, id);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -59,11 +64,12 @@ public class RespondentDAO {
     }
 
     // Update
-    public void update(Respondent respondent) {
+    public void update(SystemUserRole systemUserRole) {
         Transaction transaction = null;
         try (Session session = HibernateUtils.getSession()) {
             transaction = session.beginTransaction();
-            session.update(respondent);
+            systemUserRole.setUpdatedAt(new Timestamp(new Date().getTime()));
+            session.update(systemUserRole);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -74,11 +80,11 @@ public class RespondentDAO {
     }
 
     // Delete
-    public void delete(Respondent respondent) {
+    public void delete(SystemUserRole systemUserRole) {
         Transaction transaction = null;
         try (Session session = HibernateUtils.getSession()) {
             transaction = session.beginTransaction();
-            session.delete(respondent);
+            session.delete(systemUserRole);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -89,9 +95,9 @@ public class RespondentDAO {
     }
 
     // Get All
-    public List<Respondent> findAll() {
+    public List<SystemUserRole> findAll() {
         try (Session session = HibernateUtils.getSession()) {
-            return session.createQuery("from Respondent", Respondent.class).list();
+            return session.createQuery("from SystemUserRole", SystemUserRole.class).list();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -101,7 +107,7 @@ public class RespondentDAO {
     // Count Rows
     public long count() {
         try (Session session = HibernateUtils.getSession()) {
-            Query<Long> query = session.createQuery("select count(r.respondentId) from Respondent r", Long.class);
+            Query<Long> query = session.createQuery("select count(sur.id) from SystemUserRole sur", Long.class);
             return query.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();

@@ -15,7 +15,7 @@
  */
 package es.ieselrincon.dam.ppp.surveyhubdesktop.dao;
 
-import es.ieselrincon.dam.ppp.surveyhubdesktop.models.Question;
+import es.ieselrincon.dam.ppp.surveyhubdesktop.models.Role;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.utils.HibernateUtils;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -28,22 +28,22 @@ import org.hibernate.query.Query;
  *
  * @author Manuel Alejandro Jiménez Torres
  */
-public class QuestionDAO {
+public class RoleDAO {
 
     static {
         // Inicializar la clase anotada
-        HibernateUtils.initializeAnnotatedClass("es.ieselrincon.dam.ppp.surveyhubdesktop.models.Question");
+        HibernateUtils.initializeAnnotatedClass("es.ieselrincon.dam.ppp.surveyhubdesktop.models.Role");
     }
 
     // Create
-    public void save(Question question) {
+    public void save(Role role) {
         Transaction transaction = null;
         try (Session session = HibernateUtils.getSession()) {
             transaction = session.beginTransaction();
-            if (question.getId() == null) {
-                question.setCreatedAt(new Timestamp(new Date().getTime()));
+            if (role.getId() == null) {
+                role.setCreatedAt(new Timestamp(new Date().getTime()));
             }
-            session.save(question);
+            session.save(role);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -54,9 +54,9 @@ public class QuestionDAO {
     }
 
     // Read
-    public Question findById(int id) {
+    public Role findById(int id) {
         try (Session session = HibernateUtils.getSession()) {
-            return session.get(Question.class, id);
+            return session.get(Role.class, id);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -64,12 +64,12 @@ public class QuestionDAO {
     }
 
     // Update
-    public void update(Question question) {
+    public void update(Role role) {
         Transaction transaction = null;
         try (Session session = HibernateUtils.getSession()) {
             transaction = session.beginTransaction();
-            question.setUpdatedAt(new Timestamp(new Date().getTime()));
-            session.update(question);
+            role.setUpdatedAt(new Timestamp(new Date().getTime()));
+            session.update(role);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -80,11 +80,11 @@ public class QuestionDAO {
     }
 
     // Delete
-    public void delete(Question question) {
+    public void delete(Role role) {
         Transaction transaction = null;
         try (Session session = HibernateUtils.getSession()) {
             transaction = session.beginTransaction();
-            session.delete(question);
+            session.delete(role);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -95,9 +95,9 @@ public class QuestionDAO {
     }
 
     // Get All
-    public List<Question> findAll() {
+    public List<Role> findAll() {
         try (Session session = HibernateUtils.getSession()) {
-            return session.createQuery("from Question", Question.class).list();
+            return session.createQuery("from Role", Role.class).list();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -107,7 +107,7 @@ public class QuestionDAO {
     // Count Rows
     public long count() {
         try (Session session = HibernateUtils.getSession()) {
-            Query<Long> query = session.createQuery("select count(q.id) from Question q", Long.class);
+            Query<Long> query = session.createQuery("select count(r.id) from Role r", Long.class);
             return query.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 package es.ieselrincon.dam.ppp.surveyhubdesktop.controllers;
 
-import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.RespondentDAO;
+import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.SystemUserDAO;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.ResponseDAO;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.SurveyDAO;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.utils.DateUtils;
@@ -41,7 +41,7 @@ public class ResponseEventController {
     private final OnlineSurveySystemView view;
     private final ResponseController responseController;
 
-    public ResponseEventController(OnlineSurveySystemView view, ResponseDAO responseDAO, SurveyDAO surveyDAO, RespondentDAO respondentDAO) {
+    public ResponseEventController(OnlineSurveySystemView view, ResponseDAO responseDAO, SurveyDAO surveyDAO, SystemUserDAO respondentDAO) {
         this.view = view;
         this.responseController = new ResponseController(view, responseDAO, surveyDAO, respondentDAO);
         initializeEventHandlers();
@@ -158,7 +158,7 @@ public class ResponseEventController {
         view.getResponsesTableJMenuItem().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                responseController.generateReport("Response", "Online Survey System", DateUtils.getCurrentDateWithTimeZone());
+                responseController.generateReport("Response", "SurveyHub Desktop", DateUtils.getCurrentDateWithTimeZone());
             }
         });
 
@@ -166,7 +166,7 @@ public class ResponseEventController {
         view.getjButton43().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                responseController.generateReport("Response", "Online Survey System", DateUtils.getCurrentDateWithTimeZone());
+                responseController.generateReport("Response", "SurveyHub Desktop", DateUtils.getCurrentDateWithTimeZone());
             }
         });
     }

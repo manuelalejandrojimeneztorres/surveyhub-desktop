@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,9 @@
 package es.ieselrincon.dam.ppp.surveyhubdesktop.dao;
 
 import es.ieselrincon.dam.ppp.surveyhubdesktop.models.Survey;
-import es.ieselrincon.dam.ppp.surveyhubdesktop.models.SurveyStatus;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.utils.HibernateUtils;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -39,6 +40,9 @@ public class SurveyDAO {
         Transaction transaction = null;
         try (Session session = HibernateUtils.getSession()) {
             transaction = session.beginTransaction();
+            if (survey.getId() == null) {
+                survey.setCreatedAt(new Timestamp(new Date().getTime()));
+            }
             session.save(survey);
             transaction.commit();
         } catch (Exception e) {
@@ -64,6 +68,7 @@ public class SurveyDAO {
         Transaction transaction = null;
         try (Session session = HibernateUtils.getSession()) {
             transaction = session.beginTransaction();
+            survey.setUpdatedAt(new Timestamp(new Date().getTime()));
             session.update(survey);
             transaction.commit();
         } catch (Exception e) {
@@ -102,21 +107,11 @@ public class SurveyDAO {
     // Count Rows
     public long count() {
         try (Session session = HibernateUtils.getSession()) {
-            Query<Long> query = session.createQuery("select count(s.surveyId) from Survey s", Long.class);
+            Query<Long> query = session.createQuery("select count(s.id) from Survey s", Long.class);
             return query.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
-        }
-    }
-
-    // Find SurveyStatus by ID
-    public SurveyStatus findSurveyStatusById(int surveyStatusId) {
-        try (Session session = HibernateUtils.getSession()) {
-            return session.get(SurveyStatus.class, surveyStatusId);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
         }
     }
 }

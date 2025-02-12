@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,10 @@
  */
 package es.ieselrincon.dam.ppp.surveyhubdesktop.dao;
 
-import es.ieselrincon.dam.ppp.surveyhubdesktop.models.Question;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.models.QuestionOption;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.utils.HibernateUtils;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -39,6 +40,9 @@ public class QuestionOptionDAO {
         Transaction transaction = null;
         try (Session session = HibernateUtils.getSession()) {
             transaction = session.beginTransaction();
+            if (questionOption.getId() == null) {
+                questionOption.setCreatedAt(new Timestamp(new Date().getTime()));
+            }
             session.save(questionOption);
             transaction.commit();
         } catch (Exception e) {
@@ -64,6 +68,7 @@ public class QuestionOptionDAO {
         Transaction transaction = null;
         try (Session session = HibernateUtils.getSession()) {
             transaction = session.beginTransaction();
+            questionOption.setUpdatedAt(new Timestamp(new Date().getTime()));
             session.update(questionOption);
             transaction.commit();
         } catch (Exception e) {
@@ -102,21 +107,11 @@ public class QuestionOptionDAO {
     // Count Rows
     public long count() {
         try (Session session = HibernateUtils.getSession()) {
-            Query<Long> query = session.createQuery("select count(qo.questionOptionId) from QuestionOption qo", Long.class);
+            Query<Long> query = session.createQuery("select count(qo.id) from QuestionOption qo", Long.class);
             return query.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
-        }
-    }
-
-    // Find Question by ID
-    public Question findQuestionById(int questionId) {
-        try (Session session = HibernateUtils.getSession()) {
-            return session.get(Question.class, questionId);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
         }
     }
 }

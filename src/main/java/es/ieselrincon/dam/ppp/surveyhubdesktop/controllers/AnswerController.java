@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -72,10 +72,12 @@ public class AnswerController {
         List<Answer> answerList = answerDAO.findAll();
         for (Answer answer : answerList) {
             model.addRow(new Object[]{
-                answer.getAnswerId(),
-                answer.getResponseId(),
-                answer.getQuestionId(),
-                answer.getAnswer()
+                answer.getId(),
+                answer.getResponseByResponseId().getId(),
+                answer.getQuestionByQuestionId().getId(),
+                answer.getAnswer(),
+                answer.getCreatedAt(),
+                answer.getUpdatedAt()
             });
         }
     }

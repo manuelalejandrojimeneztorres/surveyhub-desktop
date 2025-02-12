@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,10 @@
 package es.ieselrincon.dam.ppp.surveyhubdesktop.controllers;
 
 import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.SurveyDAO;
+import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.SurveyStatusDAO;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.models.Survey;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.models.SurveyStatus;
+import es.ieselrincon.dam.ppp.surveyhubdesktop.utils.DateUtils;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.views.OnlineSurveySystemView;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -45,12 +47,14 @@ public class SurveyController {
 
     private final OnlineSurveySystemView view;
     private final SurveyDAO surveyDAO;
+    private final SurveyStatusDAO surveyStatusDAO;
     private DefaultTableModel originalTableModel;
     private static final Logger logger = LoggerFactory.getLogger(SurveyController.class);
 
-    public SurveyController(OnlineSurveySystemView view, SurveyDAO surveyDAO) {
+    public SurveyController(OnlineSurveySystemView view, SurveyDAO surveyDAO, SurveyStatusDAO surveyStatusDAO) {
         this.view = view;
         this.surveyDAO = surveyDAO;
+        this.surveyStatusDAO = surveyStatusDAO;
         initialize();
     }
 
@@ -67,15 +71,19 @@ public class SurveyController {
         model.setRowCount(0); // Limpiar la tabla antes de rellenarla
         List<Survey> surveyList = surveyDAO.findAll();
         for (Survey survey : surveyList) {
+            String startDateStr = DateUtils.convertTimestampToString(survey.getStartDate());
+            String endDateStr = DateUtils.convertTimestampToString(survey.getEndDate());
             model.addRow(new Object[]{
-                survey.getSurveyId(),
-                survey.getSurveyName(),
-                survey.getSurveyDescription(),
-                survey.getStartDate(),
-                survey.getEndDate(),
+                survey.getId(),
+                survey.getName(),
+                survey.getDescription(),
+                startDateStr,
+                endDateStr,
                 survey.getMinResponses(),
                 survey.getMaxResponses(),
-                survey.getSurveyStatusBySurveyStatusId().getSurveyStatusId()
+                survey.getSurveyStatusBySurveyStatusId().getId(),
+                survey.getCreatedAt(),
+                survey.getUpdatedAt()
             });
         }
     }
@@ -84,13 +92,21 @@ public class SurveyController {
     public void fillFieldsFromSelectedRow() {
         int selectedRow = view.getjTable2().getSelectedRow();
         if (selectedRow != -1) {
-            String surveyName = (String) view.getjTable2().getValueAt(selectedRow, 1);
-            String surveyDescription = (String) view.getjTable2().getValueAt(selectedRow, 2);
-            String startDate = (String) view.getjTable2().getValueAt(selectedRow, 3);
-            String endDate = (String) view.getjTable2().getValueAt(selectedRow, 4);
-            Integer minResponses = (Integer) view.getjTable2().getValueAt(selectedRow, 5);
-            Integer maxResponses = (Integer) view.getjTable2().getValueAt(selectedRow, 6);
-            int surveyStatusId = (int) view.getjTable2().getValueAt(selectedRow, 7);
+            Object surveyNameObj = view.getjTable2().getValueAt(selectedRow, 1);
+            Object surveyDescriptionObj = view.getjTable2().getValueAt(selectedRow, 2);
+            Object startDateObj = view.getjTable2().getValueAt(selectedRow, 3);
+            Object endDateObj = view.getjTable2().getValueAt(selectedRow, 4);
+            Object minResponsesObj = view.getjTable2().getValueAt(selectedRow, 5);
+            Object maxResponsesObj = view.getjTable2().getValueAt(selectedRow, 6);
+            Object surveyStatusIdObj = view.getjTable2().getValueAt(selectedRow, 7);
+
+            String surveyName = (surveyNameObj != null) ? (String) surveyNameObj : "";
+            String surveyDescription = (surveyDescriptionObj != null) ? (String) surveyDescriptionObj : "";
+            String startDate = (startDateObj != null) ? startDateObj.toString() : "";
+            String endDate = (endDateObj != null) ? endDateObj.toString() : "";
+            Integer minResponses = (minResponsesObj != null) ? (Integer) minResponsesObj : 0;
+            Integer maxResponses = (maxResponsesObj != null) ? (Integer) maxResponsesObj : 0;
+            Integer surveyStatusId = (surveyStatusIdObj != null) ? (Integer) surveyStatusIdObj : 1;
 
             view.getjTextField2().setText(surveyName);
             view.getjTextField3().setText(surveyDescription);
@@ -110,19 +126,19 @@ public class SurveyController {
             String endDate = view.getjTextField18().getText();
             Integer minResponses = (Integer) view.getjSpinner4().getValue();
             Integer maxResponses = (Integer) view.getjSpinner5().getValue();
-            int surveyStatusId = (int) view.getjSpinner6().getValue();
+            Integer surveyStatusId = (Integer) view.getjSpinner6().getValue();
 
             // Buscar el SurveyStatus correspondiente
-            SurveyStatus surveyStatus = surveyDAO.findSurveyStatusById(surveyStatusId);
+            SurveyStatus surveyStatus = surveyStatusDAO.findById(surveyStatusId);
             if (surveyStatus == null) {
                 throw new IllegalArgumentException("Invalid Survey Status ID");
             }
 
             Survey survey = new Survey();
-            survey.setSurveyName(surveyName);
-            survey.setSurveyDescription(surveyDescription);
-            survey.setStartDate(startDate);
-            survey.setEndDate(endDate);
+            survey.setName(surveyName);
+            survey.setDescription(surveyDescription);
+            survey.setStartDate(DateUtils.convertStringToTimestamp(startDate));
+            survey.setEndDate(DateUtils.convertStringToTimestamp(endDate));
             survey.setMinResponses(minResponses);
             survey.setMaxResponses(maxResponses);
             survey.setSurveyStatusBySurveyStatusId(surveyStatus);
@@ -151,18 +167,18 @@ public class SurveyController {
                     String updatedEndDate = view.getjTextField18().getText();
                     Integer updatedMinResponses = (Integer) view.getjSpinner4().getValue();
                     Integer updatedMaxResponses = (Integer) view.getjSpinner5().getValue();
-                    int updatedSurveyStatusId = (int) view.getjSpinner6().getValue();
+                    Integer updatedSurveyStatusId = (Integer) view.getjSpinner6().getValue();
 
                     // Buscar el SurveyStatus correspondiente
-                    SurveyStatus surveyStatus = surveyDAO.findSurveyStatusById(updatedSurveyStatusId);
+                    SurveyStatus surveyStatus = surveyStatusDAO.findById(updatedSurveyStatusId);
                     if (surveyStatus == null) {
                         throw new IllegalArgumentException("Invalid Survey Status ID");
                     }
 
-                    surveyToUpdate.setSurveyName(updatedSurveyName);
-                    surveyToUpdate.setSurveyDescription(updatedSurveyDescription);
-                    surveyToUpdate.setStartDate(updatedStartDate);
-                    surveyToUpdate.setEndDate(updatedEndDate);
+                    surveyToUpdate.setName(updatedSurveyName);
+                    surveyToUpdate.setDescription(updatedSurveyDescription);
+                    surveyToUpdate.setStartDate(DateUtils.convertStringToTimestamp(updatedStartDate));
+                    surveyToUpdate.setEndDate(DateUtils.convertStringToTimestamp(updatedEndDate));
                     surveyToUpdate.setMinResponses(updatedMinResponses);
                     surveyToUpdate.setMaxResponses(updatedMaxResponses);
                     surveyToUpdate.setSurveyStatusBySurveyStatusId(surveyStatus);

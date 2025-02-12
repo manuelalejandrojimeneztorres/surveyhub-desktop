@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package es.ieselrincon.dam.ppp.surveyhubdesktop.models;
 
 import jakarta.persistence.*;
 
+import java.sql.Timestamp;
 import java.util.Collection;
 
 /**
@@ -28,61 +29,53 @@ public class Answer {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "AnswerID")
-    private int answerId;
+    @Column(name = "id")
+    private Integer id;
     @Basic
-    @Column(name = "ResponseID", insertable = false, updatable = false)
-    private int responseId;
-    @Basic
-    @Column(name = "QuestionID", insertable = false, updatable = false)
-    private int questionId;
-    @Basic
-    @Column(name = "Answer")
+    @Column(name = "answer")
     private String answer;
+    @Basic
+    @Column(name = "createdAt")
+    private Timestamp createdAt;
+    @Basic
+    @Column(name = "updatedAt")
+    private Timestamp updatedAt;
+    @Basic
+    @Column(name = "questionId", insertable = false, updatable = false)
+    private Integer questionId;
+    @Basic
+    @Column(name = "responseId", insertable = false, updatable = false)
+    private Integer responseId;
     @ManyToOne
-    @JoinColumn(name = "ResponseID", referencedColumnName = "ResponseID", nullable = false)
-    private Response responseByResponseId;
-    @ManyToOne
-    @JoinColumn(name = "QuestionID", referencedColumnName = "QuestionID", nullable = false)
+    @JoinColumn(name = "questionId", referencedColumnName = "id", nullable = false)
     private Question questionByQuestionId;
+    @ManyToOne
+    @JoinColumn(name = "responseId", referencedColumnName = "id", nullable = false)
+    private Response responseByResponseId;
     @OneToMany(mappedBy = "answerByAnswerId")
-    private Collection<AnswerOption> answerOptionsByAnswerId;
+    private Collection<AnswerOption> answerOptionsById;
 
     public Answer() {
     }
 
-    public Answer(int answerId, int responseId, int questionId, String answer, Response responseByResponseId, Question questionByQuestionId, Collection<AnswerOption> answerOptionsByAnswerId) {
-        this.answerId = answerId;
-        this.responseId = responseId;
-        this.questionId = questionId;
+    public Answer(Integer id, String answer, Timestamp createdAt, Timestamp updatedAt, Integer questionId, Integer responseId, Question questionByQuestionId, Response responseByResponseId, Collection<AnswerOption> answerOptionsById) {
+        this.id = id;
         this.answer = answer;
-        this.responseByResponseId = responseByResponseId;
-        this.questionByQuestionId = questionByQuestionId;
-        this.answerOptionsByAnswerId = answerOptionsByAnswerId;
-    }
-
-    public int getAnswerId() {
-        return answerId;
-    }
-
-    public void setAnswerId(int answerId) {
-        this.answerId = answerId;
-    }
-
-    public int getResponseId() {
-        return responseId;
-    }
-
-    public void setResponseId(int responseId) {
-        this.responseId = responseId;
-    }
-
-    public int getQuestionId() {
-        return questionId;
-    }
-
-    public void setQuestionId(int questionId) {
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
         this.questionId = questionId;
+        this.responseId = responseId;
+        this.questionByQuestionId = questionByQuestionId;
+        this.responseByResponseId = responseByResponseId;
+        this.answerOptionsById = answerOptionsById;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getAnswer() {
@@ -93,12 +86,36 @@ public class Answer {
         this.answer = answer;
     }
 
-    public Response getResponseByResponseId() {
-        return responseByResponseId;
+    public Timestamp getCreatedAt() {
+        return createdAt;
     }
 
-    public void setResponseByResponseId(Response responseByResponseId) {
-        this.responseByResponseId = responseByResponseId;
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Integer getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(Integer questionId) {
+        this.questionId = questionId;
+    }
+
+    public Integer getResponseId() {
+        return responseId;
+    }
+
+    public void setResponseId(Integer responseId) {
+        this.responseId = responseId;
     }
 
     public Question getQuestionByQuestionId() {
@@ -109,12 +126,20 @@ public class Answer {
         this.questionByQuestionId = questionByQuestionId;
     }
 
-    public Collection<AnswerOption> getAnswerOptionsByAnswerId() {
-        return answerOptionsByAnswerId;
+    public Response getResponseByResponseId() {
+        return responseByResponseId;
     }
 
-    public void setAnswerOptionsByAnswerId(Collection<AnswerOption> answerOptionsByAnswerId) {
-        this.answerOptionsByAnswerId = answerOptionsByAnswerId;
+    public void setResponseByResponseId(Response responseByResponseId) {
+        this.responseByResponseId = responseByResponseId;
+    }
+
+    public Collection<AnswerOption> getAnswerOptionsById() {
+        return answerOptionsById;
+    }
+
+    public void setAnswerOptionsById(Collection<AnswerOption> answerOptionsById) {
+        this.answerOptionsById = answerOptionsById;
     }
 
     @Override
@@ -128,16 +153,22 @@ public class Answer {
 
         Answer answer1 = (Answer) o;
 
-        if (answerId != answer1.answerId) {
-            return false;
-        }
-        if (responseId != answer1.responseId) {
-            return false;
-        }
-        if (questionId != answer1.questionId) {
+        if (id != null ? !id.equals(answer1.id) : answer1.id != null) {
             return false;
         }
         if (answer != null ? !answer.equals(answer1.answer) : answer1.answer != null) {
+            return false;
+        }
+        if (createdAt != null ? !createdAt.equals(answer1.createdAt) : answer1.createdAt != null) {
+            return false;
+        }
+        if (updatedAt != null ? !updatedAt.equals(answer1.updatedAt) : answer1.updatedAt != null) {
+            return false;
+        }
+        if (questionId != null ? !questionId.equals(answer1.questionId) : answer1.questionId != null) {
+            return false;
+        }
+        if (responseId != null ? !responseId.equals(answer1.responseId) : answer1.responseId != null) {
             return false;
         }
 
@@ -146,15 +177,17 @@ public class Answer {
 
     @Override
     public int hashCode() {
-        int result = answerId;
-        result = 31 * result + responseId;
-        result = 31 * result + questionId;
+        int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (answer != null ? answer.hashCode() : 0);
+        result = 31 * result + (createdAt != null ? createdAt.hashCode() : 0);
+        result = 31 * result + (updatedAt != null ? updatedAt.hashCode() : 0);
+        result = 31 * result + (questionId != null ? questionId.hashCode() : 0);
+        result = 31 * result + (responseId != null ? responseId.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return "Answer{" + "answerId=" + answerId + ", responseId=" + responseId + ", questionId=" + questionId + ", answer=" + answer + ", responseByResponseId=" + responseByResponseId + ", questionByQuestionId=" + questionByQuestionId + ", answerOptionsByAnswerId=" + answerOptionsByAnswerId + '}';
+        return "Answer{" + "id=" + id + ", answer=" + answer + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", questionId=" + questionId + ", responseId=" + responseId + ", questionByQuestionId=" + questionByQuestionId + ", responseByResponseId=" + responseByResponseId + ", answerOptionsById=" + answerOptionsById + '}';
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package es.ieselrincon.dam.ppp.surveyhubdesktop.models;
 
 import jakarta.persistence.*;
 
+import java.sql.Timestamp;
 import java.util.Collection;
 
 /**
@@ -28,88 +29,80 @@ public class Question {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "QuestionID")
-    private int questionId;
+    @Column(name = "id")
+    private Integer id;
     @Basic
-    @Column(name = "SurveyID", insertable = false, updatable = false)
-    private int surveyId;
+    @Column(name = "`order`")
+    private Integer order;
     @Basic
-    @Column(name = "QuestionOrder")
-    private int questionOrder;
+    @Column(name = "text")
+    private String text;
     @Basic
-    @Column(name = "QuestionTypeID", insertable = false, updatable = false)
-    private int questionTypeId;
-    @Basic
-    @Column(name = "QuestionText")
-    private String questionText;
-    @Basic
-    @Column(name = "IsMandatory")
+    @Column(name = "isMandatory")
     private String isMandatory;
+    @Basic
+    @Column(name = "createdAt")
+    private Timestamp createdAt;
+    @Basic
+    @Column(name = "updatedAt")
+    private Timestamp updatedAt;
+    @Basic
+    @Column(name = "surveyId", insertable = false, updatable = false)
+    private Integer surveyId;
+    @Basic
+    @Column(name = "questionTypeId", insertable = false, updatable = false)
+    private Integer questionTypeId;
     @OneToMany(mappedBy = "questionByQuestionId")
-    private Collection<Answer> answersByQuestionId;
+    private Collection<Answer> answersById;
     @ManyToOne
-    @JoinColumn(name = "SurveyID", referencedColumnName = "SurveyID", nullable = false)
+    @JoinColumn(name = "surveyId", referencedColumnName = "id", nullable = false)
     private Survey surveyBySurveyId;
     @ManyToOne
-    @JoinColumn(name = "QuestionTypeID", referencedColumnName = "QuestionTypeID", nullable = false)
+    @JoinColumn(name = "questionTypeId", referencedColumnName = "id", nullable = false)
     private QuestionType questionTypeByQuestionTypeId;
     @OneToMany(mappedBy = "questionByQuestionId")
-    private Collection<QuestionOption> questionOptionsByQuestionId;
+    private Collection<QuestionOption> questionOptionsById;
 
     public Question() {
     }
 
-    public Question(int questionId, int surveyId, int questionOrder, int questionTypeId, String questionText, String isMandatory, Collection<Answer> answersByQuestionId, Survey surveyBySurveyId, QuestionType questionTypeByQuestionTypeId, Collection<QuestionOption> questionOptionsByQuestionId) {
-        this.questionId = questionId;
-        this.surveyId = surveyId;
-        this.questionOrder = questionOrder;
-        this.questionTypeId = questionTypeId;
-        this.questionText = questionText;
+    public Question(Integer id, Integer order, String text, String isMandatory, Timestamp createdAt, Timestamp updatedAt, Integer surveyId, Integer questionTypeId, Collection<Answer> answersById, Survey surveyBySurveyId, QuestionType questionTypeByQuestionTypeId, Collection<QuestionOption> questionOptionsById) {
+        this.id = id;
+        this.order = order;
+        this.text = text;
         this.isMandatory = isMandatory;
-        this.answersByQuestionId = answersByQuestionId;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.surveyId = surveyId;
+        this.questionTypeId = questionTypeId;
+        this.answersById = answersById;
         this.surveyBySurveyId = surveyBySurveyId;
         this.questionTypeByQuestionTypeId = questionTypeByQuestionTypeId;
-        this.questionOptionsByQuestionId = questionOptionsByQuestionId;
+        this.questionOptionsById = questionOptionsById;
     }
 
-    public int getQuestionId() {
-        return questionId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setQuestionId(int questionId) {
-        this.questionId = questionId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public int getSurveyId() {
-        return surveyId;
+    public Integer getOrder() {
+        return order;
     }
 
-    public void setSurveyId(int surveyId) {
-        this.surveyId = surveyId;
+    public void setOrder(Integer order) {
+        this.order = order;
     }
 
-    public int getQuestionOrder() {
-        return questionOrder;
+    public String getText() {
+        return text;
     }
 
-    public void setQuestionOrder(int questionOrder) {
-        this.questionOrder = questionOrder;
-    }
-
-    public int getQuestionTypeId() {
-        return questionTypeId;
-    }
-
-    public void setQuestionTypeId(int questionTypeId) {
-        this.questionTypeId = questionTypeId;
-    }
-
-    public String getQuestionText() {
-        return questionText;
-    }
-
-    public void setQuestionText(String questionText) {
-        this.questionText = questionText;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public String getIsMandatory() {
@@ -120,12 +113,44 @@ public class Question {
         this.isMandatory = isMandatory;
     }
 
-    public Collection<Answer> getAnswersByQuestionId() {
-        return answersByQuestionId;
+    public Timestamp getCreatedAt() {
+        return createdAt;
     }
 
-    public void setAnswersByQuestionId(Collection<Answer> answersByQuestionId) {
-        this.answersByQuestionId = answersByQuestionId;
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Integer getSurveyId() {
+        return surveyId;
+    }
+
+    public void setSurveyId(Integer surveyId) {
+        this.surveyId = surveyId;
+    }
+
+    public Integer getQuestionTypeId() {
+        return questionTypeId;
+    }
+
+    public void setQuestionTypeId(Integer questionTypeId) {
+        this.questionTypeId = questionTypeId;
+    }
+
+    public Collection<Answer> getAnswersById() {
+        return answersById;
+    }
+
+    public void setAnswersById(Collection<Answer> answersById) {
+        this.answersById = answersById;
     }
 
     public Survey getSurveyBySurveyId() {
@@ -144,12 +169,12 @@ public class Question {
         this.questionTypeByQuestionTypeId = questionTypeByQuestionTypeId;
     }
 
-    public Collection<QuestionOption> getQuestionOptionsByQuestionId() {
-        return questionOptionsByQuestionId;
+    public Collection<QuestionOption> getQuestionOptionsById() {
+        return questionOptionsById;
     }
 
-    public void setQuestionOptionsByQuestionId(Collection<QuestionOption> questionOptionsByQuestionId) {
-        this.questionOptionsByQuestionId = questionOptionsByQuestionId;
+    public void setQuestionOptionsById(Collection<QuestionOption> questionOptionsById) {
+        this.questionOptionsById = questionOptionsById;
     }
 
     @Override
@@ -163,22 +188,28 @@ public class Question {
 
         Question question = (Question) o;
 
-        if (questionId != question.questionId) {
+        if (id != null ? !id.equals(question.id) : question.id != null) {
             return false;
         }
-        if (surveyId != question.surveyId) {
+        if (order != null ? !order.equals(question.order) : question.order != null) {
             return false;
         }
-        if (questionOrder != question.questionOrder) {
-            return false;
-        }
-        if (questionTypeId != question.questionTypeId) {
-            return false;
-        }
-        if (questionText != null ? !questionText.equals(question.questionText) : question.questionText != null) {
+        if (text != null ? !text.equals(question.text) : question.text != null) {
             return false;
         }
         if (isMandatory != null ? !isMandatory.equals(question.isMandatory) : question.isMandatory != null) {
+            return false;
+        }
+        if (createdAt != null ? !createdAt.equals(question.createdAt) : question.createdAt != null) {
+            return false;
+        }
+        if (updatedAt != null ? !updatedAt.equals(question.updatedAt) : question.updatedAt != null) {
+            return false;
+        }
+        if (surveyId != null ? !surveyId.equals(question.surveyId) : question.surveyId != null) {
+            return false;
+        }
+        if (questionTypeId != null ? !questionTypeId.equals(question.questionTypeId) : question.questionTypeId != null) {
             return false;
         }
 
@@ -187,17 +218,19 @@ public class Question {
 
     @Override
     public int hashCode() {
-        int result = questionId;
-        result = 31 * result + surveyId;
-        result = 31 * result + questionOrder;
-        result = 31 * result + questionTypeId;
-        result = 31 * result + (questionText != null ? questionText.hashCode() : 0);
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (order != null ? order.hashCode() : 0);
+        result = 31 * result + (text != null ? text.hashCode() : 0);
         result = 31 * result + (isMandatory != null ? isMandatory.hashCode() : 0);
+        result = 31 * result + (createdAt != null ? createdAt.hashCode() : 0);
+        result = 31 * result + (updatedAt != null ? updatedAt.hashCode() : 0);
+        result = 31 * result + (surveyId != null ? surveyId.hashCode() : 0);
+        result = 31 * result + (questionTypeId != null ? questionTypeId.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return "Question{" + "questionId=" + questionId + ", surveyId=" + surveyId + ", questionOrder=" + questionOrder + ", questionTypeId=" + questionTypeId + ", questionText=" + questionText + ", isMandatory=" + isMandatory + ", answersByQuestionId=" + answersByQuestionId + ", surveyBySurveyId=" + surveyBySurveyId + ", questionTypeByQuestionTypeId=" + questionTypeByQuestionTypeId + ", questionOptionsByQuestionId=" + questionOptionsByQuestionId + '}';
+        return "Question{" + "id=" + id + ", order=" + order + ", text=" + text + ", isMandatory=" + isMandatory + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", surveyId=" + surveyId + ", questionTypeId=" + questionTypeId + ", answersById=" + answersById + ", surveyBySurveyId=" + surveyBySurveyId + ", questionTypeByQuestionTypeId=" + questionTypeByQuestionTypeId + ", questionOptionsById=" + questionOptionsById + '}';
     }
 }

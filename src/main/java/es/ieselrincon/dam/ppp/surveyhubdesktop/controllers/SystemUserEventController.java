@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 package es.ieselrincon.dam.ppp.surveyhubdesktop.controllers;
 
-import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.RespondentDAO;
+import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.SystemUserDAO;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.utils.DateUtils;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.views.OnlineSurveySystemView;
 import java.awt.event.ActionEvent;
@@ -34,14 +34,14 @@ import javax.swing.table.TableRowSorter;
  *
  * @author Manuel Alejandro Jiménez Torres
  */
-public class RespondentEventController {
+public class SystemUserEventController {
 
     private final OnlineSurveySystemView view;
-    private final RespondentController respondentController;
+    private final SystemUserController respondentController;
 
-    public RespondentEventController(OnlineSurveySystemView view, RespondentDAO respondentDAO) {
+    public SystemUserEventController(OnlineSurveySystemView view, SystemUserDAO respondentDAO) {
         this.view = view;
-        this.respondentController = new RespondentController(view, respondentDAO);
+        this.respondentController = new SystemUserController(view, respondentDAO);
         initializeEventHandlers();
     }
 
@@ -156,7 +156,7 @@ public class RespondentEventController {
         view.getRespondentsTableJMenuItem().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                respondentController.generateReport("Respondent", "Online Survey System", DateUtils.getCurrentDateWithTimeZone());
+                respondentController.generateReport("Respondent", "SurveyHub Desktop", DateUtils.getCurrentDateWithTimeZone());
             }
         });
 
@@ -164,7 +164,7 @@ public class RespondentEventController {
         view.getjButton42().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                respondentController.generateReport("Respondent", "Online Survey System", DateUtils.getCurrentDateWithTimeZone());
+                respondentController.generateReport("Respondent", "SurveyHub Desktop", DateUtils.getCurrentDateWithTimeZone());
             }
         });
     }

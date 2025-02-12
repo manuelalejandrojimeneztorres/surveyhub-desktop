@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -64,8 +64,10 @@ public class SurveyStatusController {
         List<SurveyStatus> surveyStatusList = surveyStatusDAO.findAll();
         for (SurveyStatus surveyStatus : surveyStatusList) {
             model.addRow(new Object[]{
-                surveyStatus.getSurveyStatusId(),
-                surveyStatus.getSurveyStatus()
+                surveyStatus.getId(),
+                surveyStatus.getStatus(),
+                surveyStatus.getCreatedAt(),
+                surveyStatus.getUpdatedAt()
             });
         }
     }
@@ -84,7 +86,7 @@ public class SurveyStatusController {
         String newStatus = (String) view.getjComboBox1().getSelectedItem();
 
         SurveyStatus surveyStatus = new SurveyStatus();
-        surveyStatus.setSurveyStatus(newStatus);
+        surveyStatus.setStatus(newStatus);
 
         surveyStatusDAO.save(surveyStatus);
 
@@ -102,7 +104,7 @@ public class SurveyStatusController {
             if (surveyStatus != null) {
                 String updatedStatus = (String) view.getjComboBox1().getSelectedItem();
 
-                surveyStatus.setSurveyStatus(updatedStatus);
+                surveyStatus.setStatus(updatedStatus);
 
                 surveyStatusDAO.update(surveyStatus);
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.AnswerOptionDAO;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.QuestionDAO;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.QuestionOptionDAO;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.QuestionTypeDAO;
-import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.RespondentDAO;
+import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.SystemUserDAO;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.ResponseDAO;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.SurveyDAO;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.SurveyStatusDAO;
@@ -74,7 +74,7 @@ public class MainController {
         new SurveyStatusEventController(dashboardView, surveyStatusDAO);
 
         SurveyDAO surveyDAO = new SurveyDAO();
-        new SurveyEventController(dashboardView, surveyDAO);
+        new SurveyEventController(dashboardView, surveyDAO, surveyStatusDAO);
 
         QuestionTypeDAO questionTypeDAO = new QuestionTypeDAO();
         new QuestionTypeEventController(dashboardView, questionTypeDAO);
@@ -85,8 +85,8 @@ public class MainController {
         QuestionOptionDAO questionOptionDAO = new QuestionOptionDAO();
         new QuestionOptionEventController(dashboardView, questionOptionDAO, questionDAO);
 
-        RespondentDAO respondentDAO = new RespondentDAO();
-        new RespondentEventController(dashboardView, respondentDAO);
+        SystemUserDAO respondentDAO = new SystemUserDAO();
+        new SystemUserEventController(dashboardView, respondentDAO);
 
         ResponseDAO responseDAO = new ResponseDAO();
         new ResponseEventController(dashboardView, responseDAO, surveyDAO, respondentDAO);

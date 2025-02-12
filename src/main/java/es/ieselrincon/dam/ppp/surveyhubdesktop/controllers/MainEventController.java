@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -143,13 +143,13 @@ public class MainEventController implements ActionListener {
 
     private void handleAboutMenuItemClicked() {
         final String MESSAGE = """
-                           ONLINE SURVEY SYSTEM
+                           SURVEYHUB DESKTOP
                            
                            COPYRIGHT NOTICE AND STATEMENT OF AUTHORSHIP
                            
-                           Copyright © 2024 by Manuel Alejandro Jiménez Torres. All rights reserved.
+                           Copyright © 2025 by Manuel Alejandro Jiménez Torres. All rights reserved.
                            
-                           This notice serves as a formal declaration of the exclusive rights held by the author, Manuel Alejandro Jiménez Torres, over the software known as the "Online Survey System". This declaration affirms the author's proprietary rights, including but not limited to, rights of ownership, authorship, and protection of intellectual property associated with the aforementioned software. Any unauthorized use, reproduction, distribution, or modification of this software, in whole or in part, without the express written consent of the author, is strictly prohibited.""";
+                           This notice serves as a formal declaration of the exclusive rights held by the author, Manuel Alejandro Jiménez Torres, over the software known as the "SurveyHub Desktop". This declaration affirms the author's proprietary rights, including but not limited to, rights of ownership, authorship, and protection of intellectual property associated with the aforementioned software. Any unauthorized use, reproduction, distribution, or modification of this software, in whole or in part, without the express written consent of the author, is strictly prohibited.""";
         JOptionPane.showMessageDialog(dashboardView, MESSAGE, "About", JOptionPane.INFORMATION_MESSAGE);
     }
 }

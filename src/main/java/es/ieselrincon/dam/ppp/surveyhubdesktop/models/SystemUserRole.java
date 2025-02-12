@@ -24,7 +24,7 @@ import java.sql.Timestamp;
  * @author Manuel Alejandro Jiménez Torres
  */
 @Entity
-public class AnswerOption {
+public class SystemUserRole {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -37,29 +37,29 @@ public class AnswerOption {
     @Column(name = "updatedAt")
     private Timestamp updatedAt;
     @Basic
-    @Column(name = "answerId", insertable = false, updatable = false)
-    private Integer answerId;
+    @Column(name = "roleId", insertable = false, updatable = false)
+    private Integer roleId;
     @Basic
-    @Column(name = "questionOptionId", insertable = false, updatable = false)
-    private Integer questionOptionId;
+    @Column(name = "systemUserId", insertable = false, updatable = false)
+    private Integer systemUserId;
     @ManyToOne
-    @JoinColumn(name = "answerId", referencedColumnName = "id")
-    private Answer answerByAnswerId;
+    @JoinColumn(name = "roleId", referencedColumnName = "id")
+    private Role roleByRoleId;
     @ManyToOne
-    @JoinColumn(name = "questionOptionId", referencedColumnName = "id", nullable = false)
-    private QuestionOption questionOptionByQuestionOptionId;
+    @JoinColumn(name = "systemUserId", referencedColumnName = "id")
+    private SystemUser systemUserBySystemUserId;
 
-    public AnswerOption() {
+    public SystemUserRole() {
     }
 
-    public AnswerOption(Integer id, Timestamp createdAt, Timestamp updatedAt, Integer answerId, Integer questionOptionId, Answer answerByAnswerId, QuestionOption questionOptionByQuestionOptionId) {
+    public SystemUserRole(Integer id, Timestamp createdAt, Timestamp updatedAt, Integer roleId, Integer systemUserId, Role roleByRoleId, SystemUser systemUserBySystemUserId) {
         this.id = id;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
-        this.answerId = answerId;
-        this.questionOptionId = questionOptionId;
-        this.answerByAnswerId = answerByAnswerId;
-        this.questionOptionByQuestionOptionId = questionOptionByQuestionOptionId;
+        this.roleId = roleId;
+        this.systemUserId = systemUserId;
+        this.roleByRoleId = roleByRoleId;
+        this.systemUserBySystemUserId = systemUserBySystemUserId;
     }
 
     public Integer getId() {
@@ -86,36 +86,36 @@ public class AnswerOption {
         this.updatedAt = updatedAt;
     }
 
-    public Integer getAnswerId() {
-        return answerId;
+    public Integer getRoleId() {
+        return roleId;
     }
 
-    public void setAnswerId(Integer answerId) {
-        this.answerId = answerId;
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 
-    public Integer getQuestionOptionId() {
-        return questionOptionId;
+    public Integer getSystemUserId() {
+        return systemUserId;
     }
 
-    public void setQuestionOptionId(Integer questionOptionId) {
-        this.questionOptionId = questionOptionId;
+    public void setSystemUserId(Integer systemUserId) {
+        this.systemUserId = systemUserId;
     }
 
-    public Answer getAnswerByAnswerId() {
-        return answerByAnswerId;
+    public Role getRoleByRoleId() {
+        return roleByRoleId;
     }
 
-    public void setAnswerByAnswerId(Answer answerByAnswerId) {
-        this.answerByAnswerId = answerByAnswerId;
+    public void setRoleByRoleId(Role roleByRoleId) {
+        this.roleByRoleId = roleByRoleId;
     }
 
-    public QuestionOption getQuestionOptionByQuestionOptionId() {
-        return questionOptionByQuestionOptionId;
+    public SystemUser getSystemUserBySystemUserId() {
+        return systemUserBySystemUserId;
     }
 
-    public void setQuestionOptionByQuestionOptionId(QuestionOption questionOptionByQuestionOptionId) {
-        this.questionOptionByQuestionOptionId = questionOptionByQuestionOptionId;
+    public void setSystemUserBySystemUserId(SystemUser systemUserBySystemUserId) {
+        this.systemUserBySystemUserId = systemUserBySystemUserId;
     }
 
     @Override
@@ -127,7 +127,7 @@ public class AnswerOption {
             return false;
         }
 
-        AnswerOption that = (AnswerOption) o;
+        SystemUserRole that = (SystemUserRole) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) {
             return false;
@@ -138,10 +138,10 @@ public class AnswerOption {
         if (updatedAt != null ? !updatedAt.equals(that.updatedAt) : that.updatedAt != null) {
             return false;
         }
-        if (answerId != null ? !answerId.equals(that.answerId) : that.answerId != null) {
+        if (roleId != null ? !roleId.equals(that.roleId) : that.roleId != null) {
             return false;
         }
-        if (questionOptionId != null ? !questionOptionId.equals(that.questionOptionId) : that.questionOptionId != null) {
+        if (systemUserId != null ? !systemUserId.equals(that.systemUserId) : that.systemUserId != null) {
             return false;
         }
 
@@ -153,13 +153,13 @@ public class AnswerOption {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (createdAt != null ? createdAt.hashCode() : 0);
         result = 31 * result + (updatedAt != null ? updatedAt.hashCode() : 0);
-        result = 31 * result + (answerId != null ? answerId.hashCode() : 0);
-        result = 31 * result + (questionOptionId != null ? questionOptionId.hashCode() : 0);
+        result = 31 * result + (roleId != null ? roleId.hashCode() : 0);
+        result = 31 * result + (systemUserId != null ? systemUserId.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return "AnswerOption{" + "id=" + id + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", answerId=" + answerId + ", questionOptionId=" + questionOptionId + ", answerByAnswerId=" + answerByAnswerId + ", questionOptionByQuestionOptionId=" + questionOptionByQuestionOptionId + '}';
+        return "SystemUserRole{" + "id=" + id + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", roleId=" + roleId + ", systemUserId=" + systemUserId + ", roleByRoleId=" + roleByRoleId + ", systemUserBySystemUserId=" + systemUserBySystemUserId + '}';
     }
 }

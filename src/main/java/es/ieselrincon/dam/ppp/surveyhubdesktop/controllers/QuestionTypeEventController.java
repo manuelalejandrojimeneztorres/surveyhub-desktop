@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package es.ieselrincon.dam.ppp.surveyhubdesktop.controllers;
 
 import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.QuestionTypeDAO;
-import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.SurveyDAO;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.utils.DateUtils;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.views.OnlineSurveySystemView;
 import java.awt.event.ActionEvent;
@@ -157,7 +156,7 @@ public class QuestionTypeEventController {
         view.getQuestionTypesTableJMenuItem().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                questionTypeController.generateReport("Question Type", "Online Survey System", DateUtils.getCurrentDateWithTimeZone());
+                questionTypeController.generateReport("Question Type", "SurveyHub Desktop", DateUtils.getCurrentDateWithTimeZone());
             }
         });
 
@@ -165,7 +164,7 @@ public class QuestionTypeEventController {
         view.getjButton39().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                questionTypeController.generateReport("Question Type", "Online Survey System", DateUtils.getCurrentDateWithTimeZone());
+                questionTypeController.generateReport("Question Type", "SurveyHub Desktop", DateUtils.getCurrentDateWithTimeZone());
             }
         });
     }

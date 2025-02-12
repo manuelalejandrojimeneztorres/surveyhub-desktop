@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,14 @@
  */
 package es.ieselrincon.dam.ppp.surveyhubdesktop.controllers;
 
-import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.RespondentDAO;
-import es.ieselrincon.dam.ppp.surveyhubdesktop.models.Respondent;
+import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.SystemUserDAO;
+import es.ieselrincon.dam.ppp.surveyhubdesktop.models.SystemUser;
+import es.ieselrincon.dam.ppp.surveyhubdesktop.utils.BCryptUtils;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.views.OnlineSurveySystemView;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,13 +41,13 @@ import net.sf.jasperreports.view.JasperViewer;
  *
  * @author Manuel Alejandro Jiménez Torres
  */
-public class RespondentController {
+public class SystemUserController {
 
     private final OnlineSurveySystemView view;
-    private final RespondentDAO respondentDAO;
+    private final SystemUserDAO respondentDAO;
     private DefaultTableModel originalTableModel;
 
-    public RespondentController(OnlineSurveySystemView view, RespondentDAO respondentDAO) {
+    public SystemUserController(OnlineSurveySystemView view, SystemUserDAO respondentDAO) {
         this.view = view;
         this.respondentDAO = respondentDAO;
         initialize();
@@ -61,13 +64,23 @@ public class RespondentController {
     public void fillTable() {
         DefaultTableModel model = (DefaultTableModel) view.getjTable6().getModel();
         model.setRowCount(0); // Limpiar la tabla antes de rellenarla
-        List<Respondent> respondentList = respondentDAO.findAll();
-        for (Respondent respondent : respondentList) {
+        List<SystemUser> respondentList = respondentDAO.findAll();
+        for (SystemUser respondent : respondentList) {
             model.addRow(new Object[]{
-                respondent.getRespondentId(),
+                respondent.getId(),
                 respondent.getLoginName(),
-                respondent.getRespondentFullName(),
-                respondent.getEmailAddress()
+                respondent.getFirstName(),
+                respondent.getLastName(),
+                respondent.getEmailAddress(),
+                respondent.getPhoneNumber(),
+                respondent.getPasswordHash(),
+                respondent.getStatus(),
+                respondent.getTokenVersion(),
+                respondent.getProfilePicture(),
+                respondent.getLastLoginAt(),
+                respondent.getLastPasswordChangeAt(),
+                respondent.getCreatedAt(),
+                respondent.getUpdatedAt()
             });
         }
     }
@@ -77,25 +90,53 @@ public class RespondentController {
         int selectedRow = view.getjTable6().getSelectedRow();
         if (selectedRow != -1) {
             String loginName = (String) view.getjTable6().getValueAt(selectedRow, 1);
-            String respondentFullName = (String) view.getjTable6().getValueAt(selectedRow, 2);
-            String emailAddress = (String) view.getjTable6().getValueAt(selectedRow, 3);
+            String firstName = (String) view.getjTable6().getValueAt(selectedRow, 2);
+            String lastName = (String) view.getjTable6().getValueAt(selectedRow, 3);
+            String emailAddress = (String) view.getjTable6().getValueAt(selectedRow, 4);
+            String phoneNumber = (String) view.getjTable6().getValueAt(selectedRow, 5);
+            String passwordHash = (String) view.getjTable6().getValueAt(selectedRow, 6);
+            String status = (String) view.getjTable6().getValueAt(selectedRow, 7);
+            Integer tokenVersion = (Integer) view.getjTable6().getValueAt(selectedRow, 8);
+            String profilePicture = (String) view.getjTable6().getValueAt(selectedRow, 9);
 
             view.getjTextField6().setText(loginName);
-            view.getjTextField7().setText(respondentFullName);
-            view.getjTextField8().setText(emailAddress);
+            view.getjTextField22().setText(firstName);
+            view.getjTextField23().setText(lastName);
+            view.getjTextField7().setText(emailAddress);
+            view.getjTextField24().setText(phoneNumber);
+            view.getjPasswordField1().setText(passwordHash);
+            view.getjComboBox13().setSelectedItem(status);
+            view.getjSpinner2().setValue(tokenVersion);
+            view.getjTextField26().setText(profilePicture);
         }
     }
 
     // Método para insertar una encuesta y actualizar la tabla
     public void insertRespondentAndUpdateTable() {
         String loginName = view.getjTextField6().getText();
-        String respondentFullName = view.getjTextField7().getText();
-        String emailAddress = view.getjTextField8().getText();
+        String firstName = view.getjTextField22().getText();
+        String lastName = view.getjTextField23().getText();
+        String emailAddress = view.getjTextField7().getText();
+        String phoneNumber = view.getjTextField24().getText();
+        char[] passwordArray = view.getjPasswordField1().getPassword();
+        String status = (String) view.getjComboBox13().getSelectedItem();
+        Integer tokenVersion = (Integer) view.getjSpinner2().getValue();
+        String profilePicture = view.getjTextField26().getText();
 
-        Respondent respondent = new Respondent();
+        SystemUser respondent = new SystemUser();
         respondent.setLoginName(loginName);
-        respondent.setRespondentFullName(respondentFullName);
+        respondent.setFirstName(firstName);
+        respondent.setLastName(lastName);
         respondent.setEmailAddress(emailAddress);
+        respondent.setPhoneNumber(phoneNumber);
+
+        String passwordString = new String(passwordArray);
+        String passwordHash = BCryptUtils.hashPassword(passwordString);
+        respondent.setPasswordHash(passwordHash);
+
+        respondent.setStatus(status);
+        respondent.setTokenVersion(tokenVersion);
+        respondent.setProfilePicture(profilePicture);
 
         respondentDAO.save(respondent);
 
@@ -109,15 +150,35 @@ public class RespondentController {
         if (selectedRow != -1) {
             int respondentId = (int) view.getjTable6().getValueAt(selectedRow, 0);
 
-            Respondent respondentToUpdate = respondentDAO.findById(respondentId);
+            SystemUser respondentToUpdate = respondentDAO.findById(respondentId);
             if (respondentToUpdate != null) {
                 String updatedLoginName = view.getjTextField6().getText();
-                String updatedRespondentFullName = view.getjTextField7().getText();
-                String updatedEmailAddress = view.getjTextField8().getText();
+                String updatedFirstName = view.getjTextField22().getText();
+                String updatedLastName = view.getjTextField23().getText();
+                String updatedEmailAddress = view.getjTextField7().getText();
+                String updatedPhoneNumber = view.getjTextField24().getText();
+                char[] updatedPasswordArray = view.getjPasswordField1().getPassword();
+                String updatedStatus = (String) view.getjComboBox13().getSelectedItem();
+                Integer updatedTokenVersion = (Integer) view.getjSpinner2().getValue();
+                String updatedProfilePicture = view.getjTextField26().getText();
 
                 respondentToUpdate.setLoginName(updatedLoginName);
-                respondentToUpdate.setRespondentFullName(updatedRespondentFullName);
+                respondentToUpdate.setFirstName(updatedFirstName);
+                respondentToUpdate.setLastName(updatedLastName);
                 respondentToUpdate.setEmailAddress(updatedEmailAddress);
+                respondentToUpdate.setPhoneNumber(updatedPhoneNumber);
+
+                String newPasswordString = new String(updatedPasswordArray);
+                String currentPasswordHash = respondentToUpdate.getPasswordHash();
+                if (!BCryptUtils.checkPassword(newPasswordString, currentPasswordHash)) {
+                    String newPasswordHash = BCryptUtils.hashPassword(newPasswordString);
+                    respondentToUpdate.setPasswordHash(newPasswordHash);
+                    respondentToUpdate.setLastPasswordChangeAt(new Timestamp(new Date().getTime()));
+                }
+
+                respondentToUpdate.setStatus(updatedStatus);
+                respondentToUpdate.setTokenVersion(updatedTokenVersion);
+                respondentToUpdate.setProfilePicture(updatedProfilePicture);
 
                 respondentDAO.update(respondentToUpdate);
 
@@ -133,7 +194,7 @@ public class RespondentController {
         if (selectedRow != -1) {
             int respondentId = (int) view.getjTable6().getValueAt(selectedRow, 0);
 
-            Respondent respondent = respondentDAO.findById(respondentId);
+            SystemUser respondent = respondentDAO.findById(respondentId);
             if (respondent != null) {
 
                 respondentDAO.delete(respondent);
@@ -147,8 +208,14 @@ public class RespondentController {
     // Método para vaciar los campos de la vista
     public void clearFields() {
         view.getjTextField6().setText("");
+        view.getjTextField22().setText("");
+        view.getjTextField23().setText("");
         view.getjTextField7().setText("");
-        view.getjTextField8().setText("");
+        view.getjTextField24().setText("");
+        view.getjPasswordField1().setText("");
+        view.getjComboBox13().setSelectedIndex(0);
+        view.getjSpinner2().setValue(1);
+        view.getjTextField26().setText("");
     }
 
     public void updateCountLabel() {

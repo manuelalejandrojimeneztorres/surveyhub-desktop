@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@ package es.ieselrincon.dam.ppp.surveyhubdesktop.dao;
 
 import es.ieselrincon.dam.ppp.surveyhubdesktop.models.QuestionType;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.utils.HibernateUtils;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -38,6 +40,9 @@ public class QuestionTypeDAO {
         Transaction transaction = null;
         try (Session session = HibernateUtils.getSession()) {
             transaction = session.beginTransaction();
+            if (questionType.getId() == null) {
+                questionType.setCreatedAt(new Timestamp(new Date().getTime()));
+            }
             session.save(questionType);
             transaction.commit();
         } catch (Exception e) {
@@ -63,6 +68,7 @@ public class QuestionTypeDAO {
         Transaction transaction = null;
         try (Session session = HibernateUtils.getSession()) {
             transaction = session.beginTransaction();
+            questionType.setUpdatedAt(new Timestamp(new Date().getTime()));
             session.update(questionType);
             transaction.commit();
         } catch (Exception e) {
@@ -101,7 +107,7 @@ public class QuestionTypeDAO {
     // Count Rows
     public long count() {
         try (Session session = HibernateUtils.getSession()) {
-            Query<Long> query = session.createQuery("select count(q.questionTypeId) from QuestionType q", Long.class);
+            Query<Long> query = session.createQuery("select count(qt.id) from QuestionType qt", Long.class);
             return query.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();

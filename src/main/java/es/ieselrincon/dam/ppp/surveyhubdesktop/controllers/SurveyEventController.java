@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package es.ieselrincon.dam.ppp.surveyhubdesktop.controllers;
 
 import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.SurveyDAO;
+import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.SurveyStatusDAO;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.utils.DateUtils;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.views.OnlineSurveySystemView;
 import java.awt.event.ActionEvent;
@@ -39,9 +40,9 @@ public class SurveyEventController {
     private final OnlineSurveySystemView view;
     private final SurveyController surveyController;
 
-    public SurveyEventController(OnlineSurveySystemView view, SurveyDAO surveyDAO) {
+    public SurveyEventController(OnlineSurveySystemView view, SurveyDAO surveyDAO, SurveyStatusDAO surveyStatusDAO) {
         this.view = view;
-        this.surveyController = new SurveyController(view, surveyDAO);
+        this.surveyController = new SurveyController(view, surveyDAO, surveyStatusDAO);
         initializeEventHandlers();
     }
 
@@ -156,7 +157,7 @@ public class SurveyEventController {
         view.getSurveysTableJMenuItem().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                surveyController.generateReport("Survey", "Online Survey System", DateUtils.getCurrentDateWithTimeZone());
+                surveyController.generateReport("Survey", "SurveyHub Desktop", DateUtils.getCurrentDateWithTimeZone());
             }
         });
 
@@ -164,7 +165,7 @@ public class SurveyEventController {
         view.getjButton38().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                surveyController.generateReport("Survey", "Online Survey System", DateUtils.getCurrentDateWithTimeZone());
+                surveyController.generateReport("Survey", "SurveyHub Desktop", DateUtils.getCurrentDateWithTimeZone());
             }
         });
     }

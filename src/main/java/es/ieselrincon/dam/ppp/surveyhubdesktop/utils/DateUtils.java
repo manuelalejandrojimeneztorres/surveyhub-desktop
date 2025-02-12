@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,10 +46,18 @@ public class DateUtils {
         return formattedDate;
     }
 
+    public static String convertTimestampToString(Timestamp timestamp) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        if (timestamp == null) {
+            return "";
+        }
+        return sdf.format(new Date(timestamp.getTime()));
+    }
+
     public static Timestamp convertStringToTimestamp(String dateString) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         try {
-            Date parsedDate = dateFormat.parse(dateString);
+            Date parsedDate = sdf.parse(dateString);
             return new Timestamp(parsedDate.getTime());
         } catch (ParseException e) {
             e.printStackTrace();

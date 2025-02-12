@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package es.ieselrincon.dam.ppp.surveyhubdesktop.controllers;
 
 import es.ieselrincon.dam.ppp.surveyhubdesktop.dao.QuestionTypeDAO;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.models.QuestionType;
-import es.ieselrincon.dam.ppp.surveyhubdesktop.models.SurveyStatus;
 import es.ieselrincon.dam.ppp.surveyhubdesktop.views.OnlineSurveySystemView;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -65,8 +64,10 @@ public class QuestionTypeController {
         List<QuestionType> questionTypeList = questionTypeDAO.findAll();
         for (QuestionType questionType : questionTypeList) {
             model.addRow(new Object[]{
-                questionType.getQuestionTypeId(),
-                questionType.getQuestionType()
+                questionType.getId(),
+                questionType.getType(),
+                questionType.getCreatedAt(),
+                questionType.getUpdatedAt()
             });
         }
     }
@@ -85,7 +86,7 @@ public class QuestionTypeController {
         String newQuestionType = (String) view.getjComboBox3().getSelectedItem();
 
         QuestionType questionType = new QuestionType();
-        questionType.setQuestionType(newQuestionType);
+        questionType.setType(newQuestionType);
 
         questionTypeDAO.save(questionType);
 
@@ -103,7 +104,7 @@ public class QuestionTypeController {
             if (questionType != null) {
                 String updatedQuestionType = (String) view.getjComboBox3().getSelectedItem();
 
-                questionType.setQuestionType(updatedQuestionType);
+                questionType.setType(updatedQuestionType);
 
                 questionTypeDAO.update(questionType);
 

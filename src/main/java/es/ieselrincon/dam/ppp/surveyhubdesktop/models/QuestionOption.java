@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package es.ieselrincon.dam.ppp.surveyhubdesktop.models;
 
 import jakarta.persistence.*;
 
+import java.sql.Timestamp;
 import java.util.Collection;
 
 /**
@@ -28,73 +29,97 @@ public class QuestionOption {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "QuestionOptionID")
-    private int questionOptionId;
+    @Column(name = "id")
+    private Integer id;
     @Basic
-    @Column(name = "QuestionID", insertable = false, updatable = false)
-    private int questionId;
+    @Column(name = "`order`")
+    private Integer order;
     @Basic
-    @Column(name = "QuestionOptionOrder")
-    private int questionOptionOrder;
+    @Column(name = "value")
+    private String value;
     @Basic
-    @Column(name = "QuestionOptionValue")
-    private String questionOptionValue;
+    @Column(name = "createdAt")
+    private Timestamp createdAt;
+    @Basic
+    @Column(name = "updatedAt")
+    private Timestamp updatedAt;
+    @Basic
+    @Column(name = "questionId", insertable = false, updatable = false)
+    private Integer questionId;
     @OneToMany(mappedBy = "questionOptionByQuestionOptionId")
-    private Collection<AnswerOption> answerOptionsByQuestionOptionId;
+    private Collection<AnswerOption> answerOptionsById;
     @ManyToOne
-    @JoinColumn(name = "QuestionID", referencedColumnName = "QuestionID", nullable = false)
+    @JoinColumn(name = "questionId", referencedColumnName = "id")
     private Question questionByQuestionId;
 
     public QuestionOption() {
     }
 
-    public QuestionOption(int questionOptionId, int questionId, int questionOptionOrder, String questionOptionValue, Collection<AnswerOption> answerOptionsByQuestionOptionId, Question questionByQuestionId) {
-        this.questionOptionId = questionOptionId;
+    public QuestionOption(Integer id, Integer order, String value, Timestamp createdAt, Timestamp updatedAt, Integer questionId, Collection<AnswerOption> answerOptionsById, Question questionByQuestionId) {
+        this.id = id;
+        this.order = order;
+        this.value = value;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
         this.questionId = questionId;
-        this.questionOptionOrder = questionOptionOrder;
-        this.questionOptionValue = questionOptionValue;
-        this.answerOptionsByQuestionOptionId = answerOptionsByQuestionOptionId;
+        this.answerOptionsById = answerOptionsById;
         this.questionByQuestionId = questionByQuestionId;
     }
 
-    public int getQuestionOptionId() {
-        return questionOptionId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setQuestionOptionId(int questionOptionId) {
-        this.questionOptionId = questionOptionId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public int getQuestionId() {
+    public Integer getOrder() {
+        return order;
+    }
+
+    public void setOrder(Integer order) {
+        this.order = order;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Integer getQuestionId() {
         return questionId;
     }
 
-    public void setQuestionId(int questionId) {
+    public void setQuestionId(Integer questionId) {
         this.questionId = questionId;
     }
 
-    public int getQuestionOptionOrder() {
-        return questionOptionOrder;
+    public Collection<AnswerOption> getAnswerOptionsById() {
+        return answerOptionsById;
     }
 
-    public void setQuestionOptionOrder(int questionOptionOrder) {
-        this.questionOptionOrder = questionOptionOrder;
-    }
-
-    public String getQuestionOptionValue() {
-        return questionOptionValue;
-    }
-
-    public void setQuestionOptionValue(String questionOptionValue) {
-        this.questionOptionValue = questionOptionValue;
-    }
-
-    public Collection<AnswerOption> getAnswerOptionsByQuestionOptionId() {
-        return answerOptionsByQuestionOptionId;
-    }
-
-    public void setAnswerOptionsByQuestionOptionId(Collection<AnswerOption> answerOptionsByQuestionOptionId) {
-        this.answerOptionsByQuestionOptionId = answerOptionsByQuestionOptionId;
+    public void setAnswerOptionsById(Collection<AnswerOption> answerOptionsById) {
+        this.answerOptionsById = answerOptionsById;
     }
 
     public Question getQuestionByQuestionId() {
@@ -116,16 +141,22 @@ public class QuestionOption {
 
         QuestionOption that = (QuestionOption) o;
 
-        if (questionOptionId != that.questionOptionId) {
+        if (id != null ? !id.equals(that.id) : that.id != null) {
             return false;
         }
-        if (questionId != that.questionId) {
+        if (order != null ? !order.equals(that.order) : that.order != null) {
             return false;
         }
-        if (questionOptionOrder != that.questionOptionOrder) {
+        if (value != null ? !value.equals(that.value) : that.value != null) {
             return false;
         }
-        if (questionOptionValue != null ? !questionOptionValue.equals(that.questionOptionValue) : that.questionOptionValue != null) {
+        if (createdAt != null ? !createdAt.equals(that.createdAt) : that.createdAt != null) {
+            return false;
+        }
+        if (updatedAt != null ? !updatedAt.equals(that.updatedAt) : that.updatedAt != null) {
+            return false;
+        }
+        if (questionId != null ? !questionId.equals(that.questionId) : that.questionId != null) {
             return false;
         }
 
@@ -134,15 +165,17 @@ public class QuestionOption {
 
     @Override
     public int hashCode() {
-        int result = questionOptionId;
-        result = 31 * result + questionId;
-        result = 31 * result + questionOptionOrder;
-        result = 31 * result + (questionOptionValue != null ? questionOptionValue.hashCode() : 0);
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (order != null ? order.hashCode() : 0);
+        result = 31 * result + (value != null ? value.hashCode() : 0);
+        result = 31 * result + (createdAt != null ? createdAt.hashCode() : 0);
+        result = 31 * result + (updatedAt != null ? updatedAt.hashCode() : 0);
+        result = 31 * result + (questionId != null ? questionId.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
-        return "QuestionOption{" + "questionOptionId=" + questionOptionId + ", questionId=" + questionId + ", questionOptionOrder=" + questionOptionOrder + ", questionOptionValue=" + questionOptionValue + ", answerOptionsByQuestionOptionId=" + answerOptionsByQuestionOptionId + ", questionByQuestionId=" + questionByQuestionId + '}';
+        return "QuestionOption{" + "id=" + id + ", order=" + order + ", value=" + value + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", questionId=" + questionId + ", answerOptionsById=" + answerOptionsById + ", questionByQuestionId=" + questionByQuestionId + '}';
     }
 }

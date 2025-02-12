@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JMenuItem;
+import javax.swing.JPasswordField;
 import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
@@ -435,12 +436,36 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
         return jTextField6;
     }
 
+    public JTextField getjTextField22() {
+        return jTextField22;
+    }
+
+    public JTextField getjTextField23() {
+        return jTextField23;
+    }
+
     public JTextField getjTextField7() {
         return jTextField7;
     }
 
-    public JTextField getjTextField8() {
-        return jTextField8;
+    public JTextField getjTextField24() {
+        return jTextField24;
+    }
+
+    public JPasswordField getjPasswordField1() {
+        return jPasswordField1;
+    }
+
+    public JComboBox<String> getjComboBox13() {
+        return jComboBox13;
+    }
+
+    public JSpinner getjSpinner2() {
+        return jSpinner2;
+    }
+
+    public JTextField getjTextField26() {
+        return jTextField26;
     }
 
     public JLabel getjLabel82() {
@@ -873,11 +898,23 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
         jButton22 = new javax.swing.JButton();
         jButton23 = new javax.swing.JButton();
         jButton24 = new javax.swing.JButton();
         jButton25 = new javax.swing.JButton();
+        jLabel86 = new javax.swing.JLabel();
+        jTextField22 = new javax.swing.JTextField();
+        jLabel87 = new javax.swing.JLabel();
+        jTextField23 = new javax.swing.JTextField();
+        jLabel88 = new javax.swing.JLabel();
+        jTextField24 = new javax.swing.JTextField();
+        jLabel89 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jLabel90 = new javax.swing.JLabel();
+        jLabel91 = new javax.swing.JLabel();
+        jTextField26 = new javax.swing.JTextField();
+        jSpinner2 = new javax.swing.JSpinner();
+        jComboBox13 = new javax.swing.JComboBox<>();
         jPanel26 = new javax.swing.JPanel();
         jLabel55 = new javax.swing.JLabel();
         jSeparator16 = new javax.swing.JSeparator();
@@ -1030,7 +1067,7 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
         jLabel75.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel76.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel76.setText("Online Survey System");
+        jLabel76.setText("SurveyHub Desktop");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -1117,7 +1154,7 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
         jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder("Filtering and Query Panel"));
         jPanel23.setPreferredSize(new java.awt.Dimension(457, 198));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SurveyStatusID", "SurveyStatus" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SurveyStatusID", "SurveyStatus", "CreatedAt", "UpdatedAt" }));
 
         jLabel30.setText("Filtering");
 
@@ -1128,7 +1165,7 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
         jLabel33.setText("SELECT");
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "SurveyStatusID", "SurveyStatus" };
+            String[] strings = { "SurveyStatusID", "SurveyStatus", "CreatedAt", "UpdatedAt" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -1213,13 +1250,13 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
         jTable1.setAutoCreateRowSorter(true);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "SurveyStatusID", "SurveyStatus"
+                "SurveyStatusID", "SurveyStatus", "CreatedAt", "UpdatedAt"
             }
         ));
         jScrollPane2.setViewportView(jTable1);
@@ -1385,14 +1422,14 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
 
         jLabel36.setText("Filter by:");
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SurveyID", "Name", "Description", "StartDate", "EndDate", "MinResponses", "MaxResponses", "SurveyStatusID" }));
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SurveyID", "Name", "Description", "StartDate", "EndDate", "MinResponses", "MaxResponses", "SurveyStatusID", "CreatedAt", "UpdatedAt" }));
 
         jLabel37.setText("Query");
 
         jLabel38.setText("SELECT");
 
         jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "SurveyID", "Name", "Description", "StartDate", "EndDate", "MinResponses", "MaxResponses", "SurveyStatusID" };
+            String[] strings = { "SurveyID", "Name", "Description", "StartDate", "EndDate", "MinResponses", "MaxResponses", "SurveyStatusID", "CreatedAt", "UpdatedAt" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -1476,13 +1513,13 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
         jTable2.setAutoCreateRowSorter(true);
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "SurveyID", "Name", "Description", "StartDate", "EndDate", "MinResponses", "MaxResponses", "SurveyStatusID"
+                "SurveyID", "Name", "Description", "StartDate", "EndDate", "MinResponses", "MaxResponses", "SurveyStatusID", "CreatedAt", "UpdatedAt"
             }
         ));
         jScrollPane1.setViewportView(jTable2);
@@ -1593,14 +1630,14 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
 
         jLabel41.setText("Filter by:");
 
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "QuestionTypeID", "QuestionType" }));
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "QuestionTypeID", "QuestionType", "CreatedAt", "UpdatedAt" }));
 
         jLabel42.setText("Query");
 
         jLabel43.setText("SELECT");
 
         jList3.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "QuestionTypeID", "QuestionType" };
+            String[] strings = { "QuestionTypeID", "QuestionType", "CreatedAt", "UpdatedAt" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -1686,13 +1723,13 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
         jTable3.setAutoCreateRowSorter(true);
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "QuestionTypeID", "QuestionType"
+                "QuestionTypeID", "QuestionType", "CreatedAt", "UpdatedAt"
             }
         ));
         jScrollPane3.setViewportView(jTable3);
@@ -1767,7 +1804,7 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
 
         jButton17.setText("Clear");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N", "Y" }));
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No", "Yes" }));
 
         jLabel14.setText("Is it Mandatory?");
 
@@ -1844,14 +1881,14 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
 
         jLabel46.setText("Filter by:");
 
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "QuestionID", "SurveyID", "Order", "QuestionTypeID", "QuestionText", "IsMandatory" }));
+        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "QuestionID", "SurveyID", "Order", "QuestionTypeID", "QuestionText", "IsMandatory", "CreatedAt", "UpdatedAt" }));
 
         jLabel47.setText("Query");
 
         jLabel48.setText("SELECT");
 
         jList4.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "QuestionID", "SurveyID", "Order", "QuestionTypeID", "QuestionText", "IsMandatory" };
+            String[] strings = { "QuestionID", "SurveyID", "Order", "QuestionTypeID", "QuestionText", "IsMandatory", "CreatedAt", "UpdatedAt" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -1935,13 +1972,13 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
         jTable4.setAutoCreateRowSorter(true);
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "QuestionID", "SurveyID", "Order", "QuestionTypeID", "QuestionText", "IsMandatory"
+                "QuestionID", "SurveyID", "Order", "QuestionTypeID", "QuestionText", "IsMandatory", "CreatedAt", "UpdatedAt"
             }
         ));
         jScrollPane4.setViewportView(jTable4);
@@ -2069,14 +2106,14 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
 
         jLabel51.setText("Filter by:");
 
-        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "QuestionOptionID", "QuestionID", "Order", "Value" }));
+        jComboBox8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "QuestionOptionID", "QuestionID", "Order", "Value", "CreatedAt", "UpdatedAt" }));
 
         jLabel52.setText("Query");
 
         jLabel53.setText("SELECT");
 
         jList5.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "QuestionOptionID", "QuestionID", "Order", "Value" };
+            String[] strings = { "QuestionOptionID", "QuestionID", "Order", "Value", "CreatedAt", "UpdatedAt" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -2161,13 +2198,13 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
         jTable5.setAutoCreateRowSorter(true);
         jTable5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "QuestionOptionID", "QuestionID", "Order", "Value"
+                "QuestionOptionID", "QuestionID", "Order", "Value", "CreatedAt", "UpdatedAt"
             }
         ));
         jScrollPane5.setViewportView(jTable5);
@@ -2222,9 +2259,9 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
 
         jLabel18.setText("Login Name:");
 
-        jLabel19.setText("Full Name:");
+        jLabel19.setText("Email:");
 
-        jLabel20.setText("Email Address:");
+        jLabel20.setText("Status:");
 
         jButton22.setText("Insert");
 
@@ -2234,6 +2271,22 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
 
         jButton25.setText("Clear");
 
+        jLabel86.setText("First Name:");
+
+        jLabel87.setText("Last Name:");
+
+        jLabel88.setText("Phone:");
+
+        jLabel89.setText("Password:");
+
+        jLabel90.setText("Token Ver.:");
+
+        jLabel91.setText("Profile Pic:");
+
+        jSpinner2.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+
+        jComboBox13.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Inactive", "Suspended" }));
+
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
         jPanel17Layout.setHorizontalGroup(
@@ -2241,25 +2294,52 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel20))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel17Layout.createSequentialGroup()
-                        .addComponent(jLabel20)
+                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jComboBox13, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel17Layout.createSequentialGroup()
-                                .addComponent(jButton22)
+                                .addComponent(jLabel90)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton23)
+                                .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel91)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton24)
+                                .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                            .addGroup(jPanel17Layout.createSequentialGroup()
+                                .addComponent(jLabel88)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton25))
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel89)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPasswordField1))))
                     .addGroup(jPanel17Layout.createSequentialGroup()
-                        .addComponent(jLabel18)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel19))
+                        .addComponent(jButton22)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton23)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton24)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton25)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel17Layout.createSequentialGroup()
+                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel86)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel87)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField23, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel17Layout.setVerticalGroup(
@@ -2268,15 +2348,27 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel86)
+                    .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel87)
+                    .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
+                    .addComponent(jLabel88)
+                    .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel89)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel90)
+                    .addComponent(jLabel91)
+                    .addComponent(jTextField26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSpinner2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton22)
@@ -2293,14 +2385,14 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
 
         jLabel56.setText("Filter by:");
 
-        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RespondentID", "LoginName", "FullName", "EmailAddress" }));
+        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RespondentID", "LoginName", "FirstName", "LastName", "EmailAddress", "PhoneNumber", "PasswordHash", "UserStatus", "TokenVersion", "ProfilePicture", "LastLoginAt", "LastPasswordChangeAt", "CreatedAt", "UpdatedAt" }));
 
         jLabel57.setText("Query");
 
         jLabel58.setText("SELECT");
 
         jList6.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "RespondentID", "LoginName", "FullName", "EmailAddress" };
+            String[] strings = { "RespondentID", "LoginName", "FirstName", "LastName", "EmailAddress", "PhoneNumber", "PasswordHash", "UserStatus", "TokenVersion", "ProfilePicture", "LastLoginAt", "LastPasswordChangeAt", "CreatedAt", "UpdatedAt" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -2318,35 +2410,34 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel26Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel26Layout.createSequentialGroup()
                         .addComponent(jLabel55)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator16))
-                    .addGroup(jPanel26Layout.createSequentialGroup()
-                        .addComponent(jLabel57)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSeparator17))
-                    .addGroup(jPanel26Layout.createSequentialGroup()
-                        .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel26Layout.createSequentialGroup()
-                                .addComponent(jLabel58)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane15))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel26Layout.createSequentialGroup()
-                                .addComponent(jLabel56)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel26Layout.createSequentialGroup()
-                                .addComponent(jLabel59)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSeparator18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jToggleButton6)))))
-                .addContainerGap())
+                    .addComponent(jLabel57)
+                    .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jSeparator17, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel26Layout.createSequentialGroup()
+                            .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel26Layout.createSequentialGroup()
+                                    .addComponent(jLabel58)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jScrollPane15))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel26Layout.createSequentialGroup()
+                                    .addComponent(jLabel56)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jComboBox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel26Layout.createSequentialGroup()
+                                    .addComponent(jLabel59)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jSeparator18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jToggleButton6))
+                                .addComponent(jTextField14, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel26Layout.setVerticalGroup(
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2384,13 +2475,13 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
         jTable6.setAutoCreateRowSorter(true);
         jTable6.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "RespondentID", "LoginName", "FullName", "EmailAddress"
+                "RespondentID", "LoginName", "FirstName", "LastName", "EmailAddress", "PhoneNumber", "PasswordHash", "UserStatus", "TokenVersion", "ProfilePicture", "LastLoginAt", "LastPasswordChangeAt", "CreatedAt", "UpdatedAt"
             }
         ));
         jScrollPane6.setViewportView(jTable6);
@@ -2472,7 +2563,7 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addComponent(jLabel23)
-                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel18Layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
                                 .addComponent(jSpinner11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2490,15 +2581,16 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jButton28)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton29))
+                                        .addComponent(jButton29)
+                                        .addGap(0, 41, Short.MAX_VALUE))
                                     .addGroup(jPanel18Layout.createSequentialGroup()
                                         .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel24)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField20, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(jTextField20))))))
                     .addComponent(jLabel21))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2531,14 +2623,14 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
 
         jLabel61.setText("Filter by:");
 
-        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ResponseID", "SurveyID", "RespondentID", "BeginDate", "EndDate" }));
+        jComboBox10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ResponseID", "SurveyID", "RespondentID", "BeginDate", "EndDate", "CreatedAt", "UpdatedAt" }));
 
         jLabel62.setText("Query");
 
         jLabel63.setText("SELECT");
 
         jList7.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "ResponseID", "SurveyID", "RespondentID", "BeginDate", "EndDate" };
+            String[] strings = { "ResponseID", "SurveyID", "RespondentID", "BeginDate", "EndDate", "CreatedAt", "UpdatedAt" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -2622,13 +2714,13 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
         jTable7.setAutoCreateRowSorter(true);
         jTable7.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ResponseID", "SurveyID", "RespondentID", "BeginDate", "EndDate"
+                "ResponseID", "SurveyID", "RespondentID", "BeginDate", "EndDate", "CreatedAt", "UpdatedAt"
             }
         ));
         jScrollPane7.setViewportView(jTable7);
@@ -2756,14 +2848,14 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
 
         jLabel66.setText("Filter by:");
 
-        jComboBox11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AnswerID", "ResponseID", "QuestionID", "Answer" }));
+        jComboBox11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AnswerID", "ResponseID", "QuestionID", "Answer", "CreatedAt", "UpdatedAt" }));
 
         jLabel67.setText("Query");
 
         jLabel68.setText("SELECT");
 
         jList8.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "AnswerID", "ResponseID", "QuestionID", "Answer" };
+            String[] strings = { "AnswerID", "ResponseID", "QuestionID", "Answer", "CreatedAt", "UpdatedAt" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -2850,13 +2942,13 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
         jTable8.setAutoCreateRowSorter(true);
         jTable8.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "AnswerID", "ResponseID", "QuestionID", "Answer"
+                "AnswerID", "ResponseID", "QuestionID", "Answer", "CreatedAt", "UpdatedAt"
             }
         ));
         jScrollPane9.setViewportView(jTable8);
@@ -2975,14 +3067,14 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
 
         jLabel71.setText("Filter by:");
 
-        jComboBox12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AnswerOptionID", "AnswerID", "QuestionOptionID" }));
+        jComboBox12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AnswerOptionID", "AnswerID", "QuestionOptionID", "CreatedAt", "UpdatedAt" }));
 
         jLabel72.setText("Query");
 
         jLabel73.setText("SELECT");
 
         jList9.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "AnswerOptionID", "AnswerID", "QuestionOptionID" };
+            String[] strings = { "AnswerOptionID", "AnswerID", "QuestionOptionID", "CreatedAt", "UpdatedAt" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -3066,13 +3158,13 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
         jTable9.setAutoCreateRowSorter(true);
         jTable9.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "AnswerOptionID", "AnswerID", "QuestionOptionID"
+                "AnswerOptionID", "AnswerID", "QuestionOptionID", "CreatedAt", "UpdatedAt"
             }
         ));
         jScrollPane8.setViewportView(jTable9);
@@ -3389,6 +3481,7 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox10;
     private javax.swing.JComboBox<String> jComboBox11;
     private javax.swing.JComboBox<String> jComboBox12;
+    private javax.swing.JComboBox<String> jComboBox13;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
@@ -3481,7 +3574,13 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel83;
     private javax.swing.JLabel jLabel84;
     private javax.swing.JLabel jLabel85;
+    private javax.swing.JLabel jLabel86;
+    private javax.swing.JLabel jLabel87;
+    private javax.swing.JLabel jLabel88;
+    private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel90;
+    private javax.swing.JLabel jLabel91;
     private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;
     private javax.swing.JList<String> jList3;
@@ -3519,6 +3618,7 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
@@ -3572,6 +3672,7 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinner16;
     private javax.swing.JSpinner jSpinner17;
     private javax.swing.JSpinner jSpinner18;
+    private javax.swing.JSpinner jSpinner2;
     private javax.swing.JSpinner jSpinner4;
     private javax.swing.JSpinner jSpinner5;
     private javax.swing.JSpinner jSpinner6;
@@ -3601,12 +3702,15 @@ public class OnlineSurveySystemView extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField20;
     private javax.swing.JTextField jTextField21;
+    private javax.swing.JTextField jTextField22;
+    private javax.swing.JTextField jTextField23;
+    private javax.swing.JTextField jTextField24;
+    private javax.swing.JTextField jTextField26;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;

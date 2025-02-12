@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -68,10 +68,12 @@ public class QuestionOptionController {
         List<QuestionOption> questionOptionList = questionOptionDAO.findAll();
         for (QuestionOption questionOption : questionOptionList) {
             model.addRow(new Object[]{
-                questionOption.getQuestionOptionId(),
-                questionOption.getQuestionByQuestionId().getQuestionId(),
-                questionOption.getQuestionOptionOrder(),
-                questionOption.getQuestionOptionValue()
+                questionOption.getId(),
+                questionOption.getQuestionByQuestionId().getId(),
+                questionOption.getOrder(),
+                questionOption.getValue(),
+                questionOption.getCreatedAt(),
+                questionOption.getUpdatedAt()
             });
         }
     }
@@ -103,8 +105,8 @@ public class QuestionOptionController {
         }
 
         QuestionOption questionOption = new QuestionOption();
-        questionOption.setQuestionOptionOrder(questionOptionOrder);
-        questionOption.setQuestionOptionValue(questionOptionValue);
+        questionOption.setOrder(questionOptionOrder);
+        questionOption.setValue(questionOptionValue);
         questionOption.setQuestionByQuestionId(question);
 
         questionOptionDAO.save(questionOption);
@@ -131,8 +133,8 @@ public class QuestionOptionController {
                     throw new IllegalArgumentException("Invalid Question ID");
                 }
 
-                questionOptionToUpdate.setQuestionOptionOrder(updatedQuestionOptionOrder);
-                questionOptionToUpdate.setQuestionOptionValue(updatedQuestionOptionValue);
+                questionOptionToUpdate.setOrder(updatedQuestionOptionOrder);
+                questionOptionToUpdate.setValue(updatedQuestionOptionValue);
                 questionOptionToUpdate.setQuestionByQuestionId(updatedQuestion);
 
                 questionOptionDAO.update(questionOptionToUpdate);

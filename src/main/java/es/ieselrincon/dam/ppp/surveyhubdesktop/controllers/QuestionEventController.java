@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 Manuel Alejandro Jiménez Torres.
+ * Copyright 2025 Manuel Alejandro Jiménez Torres.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -158,7 +158,7 @@ public class QuestionEventController {
         view.getQuestionsTableJMenuItem().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                questionController.generateReport("Question", "Online Survey System", DateUtils.getCurrentDateWithTimeZone());
+                questionController.generateReport("Question", "SurveyHub Desktop", DateUtils.getCurrentDateWithTimeZone());
             }
         });
 
@@ -166,7 +166,7 @@ public class QuestionEventController {
         view.getjButton40().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                questionController.generateReport("Question", "Online Survey System", DateUtils.getCurrentDateWithTimeZone());
+                questionController.generateReport("Question", "SurveyHub Desktop", DateUtils.getCurrentDateWithTimeZone());
             }
         });
     }

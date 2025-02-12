@@ -403,7 +403,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="24" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Online Survey System"/>
+            <Property name="text" type="java.lang.String" value="SurveyHub Desktop"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -668,9 +668,11 @@
                 <Component class="javax.swing.JComboBox" name="jComboBox2">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
+                      <StringArray count="4">
                         <StringItem index="0" value="SurveyStatusID"/>
                         <StringItem index="1" value="SurveyStatus"/>
+                        <StringItem index="2" value="CreatedAt"/>
+                        <StringItem index="3" value="UpdatedAt"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -711,9 +713,11 @@
                     <Component class="javax.swing.JList" name="jList1">
                       <Properties>
                         <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                          <StringArray count="2">
+                          <StringArray count="4">
                             <StringItem index="0" value="SurveyStatusID"/>
                             <StringItem index="1" value="SurveyStatus"/>
+                            <StringItem index="2" value="CreatedAt"/>
+                            <StringItem index="3" value="UpdatedAt"/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -760,9 +764,11 @@
                   <Properties>
                     <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="2" rowCount="4">
+                      <Table columnCount="4" rowCount="4">
                         <Column editable="true" title="SurveyStatusID" type="java.lang.Object"/>
                         <Column editable="true" title="SurveyStatus" type="java.lang.Object"/>
+                        <Column editable="true" title="CreatedAt" type="java.lang.Object"/>
+                        <Column editable="true" title="UpdatedAt" type="java.lang.Object"/>
                       </Table>
                     </Property>
                   </Properties>
@@ -1150,7 +1156,7 @@
                 <Component class="javax.swing.JComboBox" name="jComboBox5">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="8">
+                      <StringArray count="10">
                         <StringItem index="0" value="SurveyID"/>
                         <StringItem index="1" value="Name"/>
                         <StringItem index="2" value="Description"/>
@@ -1159,6 +1165,8 @@
                         <StringItem index="5" value="MinResponses"/>
                         <StringItem index="6" value="MaxResponses"/>
                         <StringItem index="7" value="SurveyStatusID"/>
+                        <StringItem index="8" value="CreatedAt"/>
+                        <StringItem index="9" value="UpdatedAt"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -1187,7 +1195,7 @@
                     <Component class="javax.swing.JList" name="jList2">
                       <Properties>
                         <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                          <StringArray count="8">
+                          <StringArray count="10">
                             <StringItem index="0" value="SurveyID"/>
                             <StringItem index="1" value="Name"/>
                             <StringItem index="2" value="Description"/>
@@ -1196,6 +1204,8 @@
                             <StringItem index="5" value="MinResponses"/>
                             <StringItem index="6" value="MaxResponses"/>
                             <StringItem index="7" value="SurveyStatusID"/>
+                            <StringItem index="8" value="CreatedAt"/>
+                            <StringItem index="9" value="UpdatedAt"/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -1237,7 +1247,7 @@
                   <Properties>
                     <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="8" rowCount="4">
+                      <Table columnCount="10" rowCount="4">
                         <Column editable="true" title="SurveyID" type="java.lang.Object"/>
                         <Column editable="true" title="Name" type="java.lang.Object"/>
                         <Column editable="true" title="Description" type="java.lang.Object"/>
@@ -1246,6 +1256,8 @@
                         <Column editable="true" title="MinResponses" type="java.lang.Object"/>
                         <Column editable="true" title="MaxResponses" type="java.lang.Object"/>
                         <Column editable="true" title="SurveyStatusID" type="java.lang.Object"/>
+                        <Column editable="true" title="CreatedAt" type="java.lang.Object"/>
+                        <Column editable="true" title="UpdatedAt" type="java.lang.Object"/>
                       </Table>
                     </Property>
                   </Properties>
@@ -1541,9 +1553,11 @@
                 <Component class="javax.swing.JComboBox" name="jComboBox6">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="2">
+                      <StringArray count="4">
                         <StringItem index="0" value="QuestionTypeID"/>
                         <StringItem index="1" value="QuestionType"/>
+                        <StringItem index="2" value="CreatedAt"/>
+                        <StringItem index="3" value="UpdatedAt"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -1572,9 +1586,11 @@
                     <Component class="javax.swing.JList" name="jList3">
                       <Properties>
                         <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                          <StringArray count="2">
+                          <StringArray count="4">
                             <StringItem index="0" value="QuestionTypeID"/>
                             <StringItem index="1" value="QuestionType"/>
+                            <StringItem index="2" value="CreatedAt"/>
+                            <StringItem index="3" value="UpdatedAt"/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -1616,9 +1632,11 @@
                   <Properties>
                     <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="2" rowCount="4">
+                      <Table columnCount="4" rowCount="4">
                         <Column editable="true" title="QuestionTypeID" type="java.lang.Object"/>
                         <Column editable="true" title="QuestionType" type="java.lang.Object"/>
+                        <Column editable="true" title="CreatedAt" type="java.lang.Object"/>
+                        <Column editable="true" title="UpdatedAt" type="java.lang.Object"/>
                       </Table>
                     </Property>
                   </Properties>
@@ -1858,8 +1876,8 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="2">
-                        <StringItem index="0" value="N"/>
-                        <StringItem index="1" value="Y"/>
+                        <StringItem index="0" value="No"/>
+                        <StringItem index="1" value="Yes"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -1989,13 +2007,15 @@
                 <Component class="javax.swing.JComboBox" name="jComboBox7">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="6">
+                      <StringArray count="8">
                         <StringItem index="0" value="QuestionID"/>
                         <StringItem index="1" value="SurveyID"/>
                         <StringItem index="2" value="Order"/>
                         <StringItem index="3" value="QuestionTypeID"/>
                         <StringItem index="4" value="QuestionText"/>
                         <StringItem index="5" value="IsMandatory"/>
+                        <StringItem index="6" value="CreatedAt"/>
+                        <StringItem index="7" value="UpdatedAt"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -2024,13 +2044,15 @@
                     <Component class="javax.swing.JList" name="jList4">
                       <Properties>
                         <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                          <StringArray count="6">
+                          <StringArray count="8">
                             <StringItem index="0" value="QuestionID"/>
                             <StringItem index="1" value="SurveyID"/>
                             <StringItem index="2" value="Order"/>
                             <StringItem index="3" value="QuestionTypeID"/>
                             <StringItem index="4" value="QuestionText"/>
                             <StringItem index="5" value="IsMandatory"/>
+                            <StringItem index="6" value="CreatedAt"/>
+                            <StringItem index="7" value="UpdatedAt"/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -2072,13 +2094,15 @@
                   <Properties>
                     <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="6" rowCount="4">
+                      <Table columnCount="8" rowCount="4">
                         <Column editable="true" title="QuestionID" type="java.lang.Object"/>
                         <Column editable="true" title="SurveyID" type="java.lang.Object"/>
                         <Column editable="true" title="Order" type="java.lang.Object"/>
                         <Column editable="true" title="QuestionTypeID" type="java.lang.Object"/>
                         <Column editable="true" title="QuestionText" type="java.lang.Object"/>
                         <Column editable="true" title="IsMandatory" type="java.lang.Object"/>
+                        <Column editable="true" title="CreatedAt" type="java.lang.Object"/>
+                        <Column editable="true" title="UpdatedAt" type="java.lang.Object"/>
                       </Table>
                     </Property>
                   </Properties>
@@ -2399,11 +2423,13 @@
                 <Component class="javax.swing.JComboBox" name="jComboBox8">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
+                      <StringArray count="6">
                         <StringItem index="0" value="QuestionOptionID"/>
                         <StringItem index="1" value="QuestionID"/>
                         <StringItem index="2" value="Order"/>
                         <StringItem index="3" value="Value"/>
+                        <StringItem index="4" value="CreatedAt"/>
+                        <StringItem index="5" value="UpdatedAt"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -2432,11 +2458,13 @@
                     <Component class="javax.swing.JList" name="jList5">
                       <Properties>
                         <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                          <StringArray count="4">
+                          <StringArray count="6">
                             <StringItem index="0" value="QuestionOptionID"/>
                             <StringItem index="1" value="QuestionID"/>
                             <StringItem index="2" value="Order"/>
                             <StringItem index="3" value="Value"/>
+                            <StringItem index="4" value="CreatedAt"/>
+                            <StringItem index="5" value="UpdatedAt"/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -2478,11 +2506,13 @@
                   <Properties>
                     <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="4">
+                      <Table columnCount="6" rowCount="4">
                         <Column editable="true" title="QuestionOptionID" type="java.lang.Object"/>
                         <Column editable="true" title="QuestionID" type="java.lang.Object"/>
                         <Column editable="true" title="Order" type="java.lang.Object"/>
                         <Column editable="true" title="Value" type="java.lang.Object"/>
+                        <Column editable="true" title="CreatedAt" type="java.lang.Object"/>
+                        <Column editable="true" title="UpdatedAt" type="java.lang.Object"/>
                       </Table>
                     </Property>
                   </Properties>
@@ -2579,31 +2609,62 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel18" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel20" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jComboBox13" max="32767" attributes="0"/>
+                                      <Component id="jTextField7" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="jButton22" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel90" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jButton23" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jSpinner2" min="-2" pref="58" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="jLabel91" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jButton24" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jButton25" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jTextField26" pref="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="jTextField7" alignment="0" min="-2" pref="342" max="-2" attributes="0"/>
-                                      <Component id="jTextField8" alignment="0" min="-2" pref="342" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel88" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jTextField24" min="-2" pref="80" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabel89" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jPasswordField1" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField6" min="-2" pref="341" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="jButton22" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jButton23" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jButton24" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jButton25" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="jLabel19" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jTextField6" min="-2" pref="80" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jLabel86" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jTextField22" min="-2" pref="65" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jLabel87" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jTextField23" pref="67" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2614,16 +2675,28 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jTextField6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel86" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField22" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel87" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField23" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel88" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField24" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel89" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jPasswordField1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jTextField7" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField8" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel90" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel91" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField26" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jSpinner2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBox13" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="62" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -2647,17 +2720,15 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel19">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Full Name:"/>
+                    <Property name="text" type="java.lang.String" value="Email:"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextField7">
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel20">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Email Address:"/>
+                    <Property name="text" type="java.lang.String" value="Status:"/>
                   </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="jTextField8">
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton22">
                   <Properties>
@@ -2679,6 +2750,67 @@
                     <Property name="text" type="java.lang.String" value="Clear"/>
                   </Properties>
                 </Component>
+                <Component class="javax.swing.JLabel" name="jLabel86">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="First Name:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="jTextField22">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel87">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Last Name:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="jTextField23">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel88">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Phone:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="jTextField24">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel89">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Password:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JPasswordField" name="jPasswordField1">
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel90">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Token Ver.:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabel91">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Profile Pic:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="jTextField26">
+                </Component>
+                <Component class="javax.swing.JSpinner" name="jSpinner2">
+                  <Properties>
+                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                      <SpinnerModel initial="1" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="jComboBox13">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="3">
+                        <StringItem index="0" value="Active"/>
+                        <StringItem index="1" value="Inactive"/>
+                        <StringItem index="2" value="Suspended"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="jPanel26">
@@ -2698,44 +2830,43 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel55" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jSeparator16" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="jLabel57" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jSeparator17" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="jLabel58" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jScrollPane15" max="32767" attributes="0"/>
+                              <Component id="jLabel57" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                  <Component id="jSeparator17" alignment="1" min="-2" pref="398" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="jLabel58" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="jScrollPane15" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel56" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jComboBox9" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel56" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jComboBox9" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jTextField14" min="-2" pref="269" max="-2" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Component id="jLabel59" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jSeparator18" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jToggleButton6" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="jLabel59" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jSeparator18" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="jToggleButton6" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="jTextField14" min="-2" pref="222" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2796,11 +2927,21 @@
                 <Component class="javax.swing.JComboBox" name="jComboBox9">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
+                      <StringArray count="14">
                         <StringItem index="0" value="RespondentID"/>
                         <StringItem index="1" value="LoginName"/>
-                        <StringItem index="2" value="FullName"/>
-                        <StringItem index="3" value="EmailAddress"/>
+                        <StringItem index="2" value="FirstName"/>
+                        <StringItem index="3" value="LastName"/>
+                        <StringItem index="4" value="EmailAddress"/>
+                        <StringItem index="5" value="PhoneNumber"/>
+                        <StringItem index="6" value="PasswordHash"/>
+                        <StringItem index="7" value="UserStatus"/>
+                        <StringItem index="8" value="TokenVersion"/>
+                        <StringItem index="9" value="ProfilePicture"/>
+                        <StringItem index="10" value="LastLoginAt"/>
+                        <StringItem index="11" value="LastPasswordChangeAt"/>
+                        <StringItem index="12" value="CreatedAt"/>
+                        <StringItem index="13" value="UpdatedAt"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -2829,11 +2970,21 @@
                     <Component class="javax.swing.JList" name="jList6">
                       <Properties>
                         <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                          <StringArray count="4">
+                          <StringArray count="14">
                             <StringItem index="0" value="RespondentID"/>
                             <StringItem index="1" value="LoginName"/>
-                            <StringItem index="2" value="FullName"/>
-                            <StringItem index="3" value="EmailAddress"/>
+                            <StringItem index="2" value="FirstName"/>
+                            <StringItem index="3" value="LastName"/>
+                            <StringItem index="4" value="EmailAddress"/>
+                            <StringItem index="5" value="PhoneNumber"/>
+                            <StringItem index="6" value="PasswordHash"/>
+                            <StringItem index="7" value="UserStatus"/>
+                            <StringItem index="8" value="TokenVersion"/>
+                            <StringItem index="9" value="ProfilePicture"/>
+                            <StringItem index="10" value="LastLoginAt"/>
+                            <StringItem index="11" value="LastPasswordChangeAt"/>
+                            <StringItem index="12" value="CreatedAt"/>
+                            <StringItem index="13" value="UpdatedAt"/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -2875,11 +3026,21 @@
                   <Properties>
                     <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="4">
+                      <Table columnCount="14" rowCount="4">
                         <Column editable="true" title="RespondentID" type="java.lang.Object"/>
                         <Column editable="true" title="LoginName" type="java.lang.Object"/>
-                        <Column editable="true" title="FullName" type="java.lang.Object"/>
+                        <Column editable="true" title="FirstName" type="java.lang.Object"/>
+                        <Column editable="true" title="LastName" type="java.lang.Object"/>
                         <Column editable="true" title="EmailAddress" type="java.lang.Object"/>
+                        <Column editable="true" title="PhoneNumber" type="java.lang.Object"/>
+                        <Column editable="true" title="PasswordHash" type="java.lang.Object"/>
+                        <Column editable="true" title="UserStatus" type="java.lang.Object"/>
+                        <Column editable="true" title="TokenVersion" type="java.lang.Object"/>
+                        <Column editable="true" title="ProfilePicture" type="java.lang.Object"/>
+                        <Column editable="true" title="LastLoginAt" type="java.lang.Object"/>
+                        <Column editable="true" title="LastPasswordChangeAt" type="java.lang.Object"/>
+                        <Column editable="true" title="CreatedAt" type="java.lang.Object"/>
+                        <Column editable="true" title="UpdatedAt" type="java.lang.Object"/>
                       </Table>
                     </Property>
                   </Properties>
@@ -2978,7 +3139,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                                           <Component id="jSpinner11" min="-2" max="-2" attributes="0"/>
@@ -2990,7 +3151,7 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
                                                   <Component id="jButton26" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="jButton27" min="-2" max="-2" attributes="0"/>
@@ -2998,13 +3159,14 @@
                                                   <Component id="jButton28" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="jButton29" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="0" pref="41" max="32767" attributes="0"/>
                                               </Group>
-                                              <Group type="102" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
                                                   <Component id="jTextField21" min="-2" pref="130" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jTextField20" min="-2" pref="132" max="-2" attributes="0"/>
+                                                  <Component id="jTextField20" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -3012,7 +3174,7 @@
                               </Group>
                               <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="28" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -3219,12 +3381,14 @@
                 <Component class="javax.swing.JComboBox" name="jComboBox10">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="5">
+                      <StringArray count="7">
                         <StringItem index="0" value="ResponseID"/>
                         <StringItem index="1" value="SurveyID"/>
                         <StringItem index="2" value="RespondentID"/>
                         <StringItem index="3" value="BeginDate"/>
                         <StringItem index="4" value="EndDate"/>
+                        <StringItem index="5" value="CreatedAt"/>
+                        <StringItem index="6" value="UpdatedAt"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -3253,12 +3417,14 @@
                     <Component class="javax.swing.JList" name="jList7">
                       <Properties>
                         <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                          <StringArray count="5">
+                          <StringArray count="7">
                             <StringItem index="0" value="ResponseID"/>
                             <StringItem index="1" value="SurveyID"/>
                             <StringItem index="2" value="RespondentID"/>
                             <StringItem index="3" value="BeginDate"/>
                             <StringItem index="4" value="EndDate"/>
+                            <StringItem index="5" value="CreatedAt"/>
+                            <StringItem index="6" value="UpdatedAt"/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -3300,12 +3466,14 @@
                   <Properties>
                     <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="5" rowCount="4">
+                      <Table columnCount="7" rowCount="4">
                         <Column editable="true" title="ResponseID" type="java.lang.Object"/>
                         <Column editable="true" title="SurveyID" type="java.lang.Object"/>
                         <Column editable="true" title="RespondentID" type="java.lang.Object"/>
                         <Column editable="true" title="BeginDate" type="java.lang.Object"/>
                         <Column editable="true" title="EndDate" type="java.lang.Object"/>
+                        <Column editable="true" title="CreatedAt" type="java.lang.Object"/>
+                        <Column editable="true" title="UpdatedAt" type="java.lang.Object"/>
                       </Table>
                     </Property>
                   </Properties>
@@ -3628,11 +3796,13 @@
                 <Component class="javax.swing.JComboBox" name="jComboBox11">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
+                      <StringArray count="6">
                         <StringItem index="0" value="AnswerID"/>
                         <StringItem index="1" value="ResponseID"/>
                         <StringItem index="2" value="QuestionID"/>
                         <StringItem index="3" value="Answer"/>
+                        <StringItem index="4" value="CreatedAt"/>
+                        <StringItem index="5" value="UpdatedAt"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -3661,11 +3831,13 @@
                     <Component class="javax.swing.JList" name="jList8">
                       <Properties>
                         <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                          <StringArray count="4">
+                          <StringArray count="6">
                             <StringItem index="0" value="AnswerID"/>
                             <StringItem index="1" value="ResponseID"/>
                             <StringItem index="2" value="QuestionID"/>
                             <StringItem index="3" value="Answer"/>
+                            <StringItem index="4" value="CreatedAt"/>
+                            <StringItem index="5" value="UpdatedAt"/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -3707,11 +3879,13 @@
                   <Properties>
                     <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="4">
+                      <Table columnCount="6" rowCount="4">
                         <Column editable="true" title="AnswerID" type="java.lang.Object"/>
                         <Column editable="true" title="ResponseID" type="java.lang.Object"/>
                         <Column editable="true" title="QuestionID" type="java.lang.Object"/>
                         <Column editable="true" title="Answer" type="java.lang.Object"/>
+                        <Column editable="true" title="CreatedAt" type="java.lang.Object"/>
+                        <Column editable="true" title="UpdatedAt" type="java.lang.Object"/>
                       </Table>
                     </Property>
                   </Properties>
@@ -4013,10 +4187,12 @@
                 <Component class="javax.swing.JComboBox" name="jComboBox12">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="3">
+                      <StringArray count="5">
                         <StringItem index="0" value="AnswerOptionID"/>
                         <StringItem index="1" value="AnswerID"/>
                         <StringItem index="2" value="QuestionOptionID"/>
+                        <StringItem index="3" value="CreatedAt"/>
+                        <StringItem index="4" value="UpdatedAt"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -4045,10 +4221,12 @@
                     <Component class="javax.swing.JList" name="jList9">
                       <Properties>
                         <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                          <StringArray count="3">
+                          <StringArray count="5">
                             <StringItem index="0" value="AnswerOptionID"/>
                             <StringItem index="1" value="AnswerID"/>
                             <StringItem index="2" value="QuestionOptionID"/>
+                            <StringItem index="3" value="CreatedAt"/>
+                            <StringItem index="4" value="UpdatedAt"/>
                           </StringArray>
                         </Property>
                       </Properties>
@@ -4090,10 +4268,12 @@
                   <Properties>
                     <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="3" rowCount="4">
+                      <Table columnCount="5" rowCount="4">
                         <Column editable="true" title="AnswerOptionID" type="java.lang.Object"/>
                         <Column editable="true" title="AnswerID" type="java.lang.Object"/>
                         <Column editable="true" title="QuestionOptionID" type="java.lang.Object"/>
+                        <Column editable="true" title="CreatedAt" type="java.lang.Object"/>
+                        <Column editable="true" title="UpdatedAt" type="java.lang.Object"/>
                       </Table>
                     </Property>
                   </Properties>

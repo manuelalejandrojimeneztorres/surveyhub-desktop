@@ -15,18 +15,26 @@
  */
 package es.ieselrincon.dam.ppp.surveyhubdesktop.utils;
 
-import javax.swing.Icon;
-import javax.swing.JTabbedPane;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
  * @author Manuel Alejandro Jiménez Torres
  */
-public class ComponentUtils {
+public class BCryptUtils {
 
-    public static void setTabbedPaneIcons(JTabbedPane tabbedPane, Icon[] icons) {
-        for (int i = 0; i < tabbedPane.getTabCount() && i < icons.length; i++) {
-            tabbedPane.setIconAt(i, icons[i]);
+    private static final int SALT_ROUNDS = 12;
+
+    public static String hashPassword(String plainTextPassword) {
+        String salt = BCrypt.gensalt(SALT_ROUNDS);
+        return BCrypt.hashpw(plainTextPassword, salt);
+    }
+
+    public static boolean checkPassword(String plainTextPassword, String hashedPassword) {
+        try {
+            return BCrypt.checkpw(plainTextPassword, hashedPassword);
+        } catch (IllegalArgumentException e) {
+            return false;
         }
     }
 }
